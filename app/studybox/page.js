@@ -1,590 +1,1085 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
-import Link from 'next/link';
+import Link from 'next/link'
 
 export default function StudyBoxPage() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [activeTab, setActiveTab] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+
   useEffect(() => {
-    // Gestion du scroll vers les sections via les ancres
-    const hash = window.location.hash
-    if (hash) {
-      const element = document.querySelector(hash)
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }, 100)
-      }
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#050816] relative overflow-hidden">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-studybox-blue overflow-hidden">
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }}></div>
-
-        {/* Gradient Glow Effect */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-apple-glow"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-apple-glow animation-delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl animate-apple-glow animation-delay-500"></div>
+      {/* Particules de fond animées */}
+      <div className="fixed inset-0 pointer-events-none">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-30"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float-particle ${5 + Math.random() * 10}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Hero Section - Design futuriste avec effet de profondeur */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Effet de lumière dynamique suivant la souris */}
+        <div 
+          className="absolute w-[600px] h-[600px] rounded-full blur-[150px] opacity-30 transition-all duration-1000 ease-out pointer-events-none"
+          style={{
+            background: 'radial-gradient(circle, rgba(6,182,212,0.4) 0%, rgba(59,130,246,0.3) 50%, transparent 100%)',
+            left: `${mousePosition.x - 300}px`,
+            top: `${mousePosition.y - 300}px`,
+          }}
+        />
+        
+        {/* Rayons lumineux en arrière-plan */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-transparent via-cyan-500 to-transparent animate-pulse"></div>
+          <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-0 left-3/4 w-1 h-full bg-gradient-to-b from-transparent via-purple-500 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
-
-        {/* Decorative Icons Background */}
-        <div className="absolute inset-0">
-          {/* Book Icon - Top Left */}
-          <svg className="absolute top-20 left-10 w-24 h-24 text-white/40 animate-apple-icon animation-delay-300 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-
-          {/* Star Icon - Top Center */}
-          <svg className="absolute top-24 left-1/3 w-16 h-16 text-white/25 animate-apple-icon animation-delay-400 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-          </svg>
-
-          {/* Star Icon - Top Right */}
-          <svg className="absolute top-32 right-20 w-20 h-20 text-white/30 animate-apple-icon animation-delay-500 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-          </svg>
-
-          {/* Light Bulb - Top Right Corner */}
-          <svg className="absolute top-16 right-1/4 w-22 h-22 text-white/20 animate-apple-icon animation-delay-600 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-          </svg>
-
-          {/* Calendar - Middle Left */}
-          <svg className="absolute top-1/2 left-12 w-20 h-20 text-white/30 animate-apple-icon animation-delay-800 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-
-          {/* Gear - Middle Right */}
-          <svg className="absolute top-1/2 right-16 w-24 h-24 text-white/25 animate-apple-icon animation-delay-1000 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-
-          {/* Light Bulb - Bottom Left */}
-          <svg className="absolute bottom-20 left-16 w-28 h-28 text-white/35 animate-apple-icon animation-delay-700 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-          </svg>
-
-          {/* Pencil - Bottom Right */}
-          <svg className="absolute bottom-24 right-16 w-24 h-24 text-white/25 rotate-45 animate-apple-icon animation-delay-900 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-          </svg>
-
-          {/* Document - Bottom Center */}
-          <svg className="absolute bottom-16 left-1/3 w-18 h-18 text-white/20 animate-apple-icon animation-delay-1100 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-
-          {/* Trophy - Bottom Right Area */}
-          <svg className="absolute bottom-32 right-1/4 w-20 h-20 text-white/25 animate-apple-icon animation-delay-1200 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-          </svg>
-
-          {/* Book - Middle Center Left */}
-          <svg className="absolute top-1/3 left-1/4 w-16 h-16 text-white/20 -rotate-12 animate-apple-icon animation-delay-1300 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-
-          {/* Star - Middle Center Right */}
-          <svg className="absolute top-2/3 right-1/3 w-14 h-14 text-white/25 animate-apple-icon animation-delay-1400 animate-apple-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-          </svg>
+        
+        {/* Cercles concentriques animés */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="w-[800px] h-[800px] border border-blue-500/10 rounded-full animate-ping-slow"></div>
+          <div className="absolute inset-0 w-[600px] h-[600px] m-auto border border-cyan-500/10 rounded-full animate-ping-slow" style={{animationDelay: '1s'}}></div>
+          <div className="absolute inset-0 w-[400px] h-[400px] m-auto border border-purple-500/10 rounded-full animate-ping-slow" style={{animationDelay: '2s'}}></div>
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <div className="animate-apple-title">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white">
-              La StudyBox
+        
+        {/* Contenu principal - Layout centré innovant */}
+        <div className="relative z-10 w-full px-6 py-32">
+          <div className="max-w-6xl mx-auto text-center">
+            {/* Badge flottant */}
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/30 px-6 py-3 rounded-full mb-8 shadow-lg shadow-cyan-500/20">
+              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+              <span className="text-cyan-300 text-sm font-bold tracking-widest">LA NOUVELLE GÉNÉRATION</span>
+            </div>
+            
+            {/* Titre spectaculaire */}
+            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black mb-8 leading-none">
+              <span className="block text-white">StudyBox</span>
             </h1>
-          </div>
-          <div className="animate-apple-subtitle animation-delay-400">
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Tout ce dont vous avez besoin pour réussir vos études, 
-              organisé dans une box élégante et pratique.
+            
+            {/* Sous-titre avec effet de typing */}
+            <p className="text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 font-bold mb-6">
+              Transformez votre façon d'étudier avec l'intelligence artificielle
             </p>
+            
+            {/* Description courte */}
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+              Un parcours personnalisé, des résultats mesurables, une réussite garantie
+            </p>
+            
+            {/* CTA avec effet néon */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+              <Link 
+                href="#discover" 
+                className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl font-bold text-lg text-white overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50"
+              >
+                <span className="relative z-10 flex items-center gap-3">
+                  Découvrir
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </Link>
+            </div>
+            
+            {/* Stats en ligne */}
+            <div className="flex flex-wrap items-center justify-center gap-12">
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className={`w-10 h-10 rounded-full border-2 border-[#050816] bg-gradient-to-br ${i === 0 ? 'from-cyan-400 to-blue-500' : i === 1 ? 'from-blue-400 to-purple-500' : 'from-purple-400 to-pink-500'}`}></div>
+                  ))}
+                </div>
+                <span className="text-white font-semibold">+1k étudiants actifs</span>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+                <span className="text-white font-semibold ml-2">4.8/5</span>
+                <span className="text-gray-500 text-sm">(975 avis)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator animé */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <span className="text-gray-500 text-xs uppercase tracking-wider">Scroll</span>
+          <div className="w-6 h-10 border-2 border-gray-600 rounded-full p-1">
+            <div className="w-1 h-3 bg-cyan-400 rounded-full mx-auto animate-scroll-down"></div>
           </div>
         </div>
       </section>
 
-      {/* Section: Que contient la box ? */}
-      <section id="contenu" className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-black">
-              Que contient la box ?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Découvrez tous les éléments soigneusement sélectionnés pour optimiser votre expérience d'étude
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Item 1 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
+      {/* Section: Rencontrez Boosty - Notre Mascotte */}
+      <section id="discover" className="relative py-32 px-6 bg-gradient-to-b from-[#050816] to-[#0a0e27] overflow-hidden">
+        {/* Effet de grille en fond */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)',
+            backgroundSize: '100px 100px'
+          }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Colonne gauche - Mascotte avec effets */}
+            <div className="relative">
+              {/* Cercle lumineux derrière */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+              
+              {/* Container mascotte */}
+              <div className="relative bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-xl border border-blue-500/30 rounded-3xl p-12 shadow-2xl">
+                {/* Mascotte Boosty */}
+                <div className="relative aspect-square flex items-center justify-center">
+                  <Image
+                    src="/images/macottediplome.png"
+                    alt="Boosty - Mascotte StudyBox"
+                    width={500}
+                    height={500}
+                    className="animate-float-slow object-contain"
+                    priority
+                  />
+                  
+                  {/* Particules autour de la mascotte */}
+                  <div className="absolute top-10 right-10 w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
+                  <div className="absolute bottom-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute top-1/2 right-5 w-2 h-2 bg-purple-400 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+                </div>
+                
+                {/* Badge "IA Active" flottant */}
+                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-green-500 to-emerald-500 px-6 py-3 rounded-full shadow-lg shadow-green-500/50 animate-bounce-slow">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                    <span className="text-white font-bold text-sm">IA Active</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-black">Canette Buddy Focus</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Boisson énergisante 100% naturelle spécialement conçue pour les étudiants, pour rester concentré pendant les révisions. 100% bio et bonne pour la santé. 
-              </p>
             </div>
-
-            {/* Item 2 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            
+            {/* Colonne droite - Présentation */}
+            <div className="space-y-8">
+              <div>
+                <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-400/30 px-4 py-2 rounded-full mb-6">
+                  <span className="text-purple-300 text-sm font-bold">👋 RENCONTREZ</span>
+                </div>
+                
+                <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+                  Voici Boosty
+                </h2>
+                
+                <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                  Votre compagnon d'études intelligent qui vous accompagne 24/7 dans votre réussite académique !
+                </p>
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-black">Partenaires locaux</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Produits sélectionnés auprès de nos partenaires belges de qualité pour soutenir l'économie locale
-              </p>
-            </div>
-
-            {/* Item 3 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+              
+              {/* Caractéristiques de Boosty */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-cyan-500/50 transition-all group">
+                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">🧠</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-1">Intelligence Artificielle</h3>
+                    <p className="text-gray-400 text-sm">Boosty utilise sa propre IA pour comprendre vos besoins et s'adapter à votre style d'apprentissage</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-blue-500/50 transition-all group">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">💡</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-1">Toujours disponible</h3>
+                    <p className="text-gray-400 text-sm">Posez vos questions à tout moment, Boosty est là pour vous aider jour et nuit</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-purple-500/50 transition-all group">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">🎯</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-1">Personnalisé pour vous</h3>
+                    <p className="text-gray-400 text-sm">Chaque étudiant est unique, Buddy adapte ses conseils à votre profil</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-black">Planificateur</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Organisez votre semaine avec notre planificateur hebdomadaire et mensuel. Calendrier 100% intelligent. 
-              </p>
-            </div>
-
-            {/* Item 4 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
+              
+              {/* Stats de Buddy */}
+              <div className="grid grid-cols-3 gap-4 pt-8">
+                <div className="text-center p-4 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20">
+                  <div className="text-3xl font-black text-cyan-400 mb-1">1k+</div>
+                  <div className="text-xs text-gray-400">Étudiants aidés</div>
+                </div>
+                <div className="text-center p-4 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
+                  <div className="text-3xl font-black text-blue-400 mb-1">+45%</div>
+                  <div className="text-xs text-gray-400">Amélioration moyenne</div>
+                </div>
+                <div className="text-center p-4 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/20">
+                  <div className="text-3xl font-black text-purple-400 mb-1">96%</div>
+                  <div className="text-xs text-gray-400">Satisfaction</div>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-3 text-black">Post-it & marque-pages</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Assortiment de post-it colorés et marque-pages pour organiser vos révisions
-              </p>
-            </div>
-
-            {/* Item 5 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-semibold mb-3 text-black">Fiches de révision</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Pack de fiches bristol de différentes couleurs pour vos résumés de cours
-              </p>
-            </div>
-
-            {/* Item 6 */}
-            <div className="group p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-semibold mb-3 text-black">Accès application</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Code d'accès premium à notre application mobile d'organisation et de révision. Une application complète et 100% intelligente. 
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Section: Pour qui ? */}
-      <section id="pour-qui" className="py-24 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-black">
-              Pour qui ?
+      <section id="pour-qui" className="relative py-32 px-6 bg-gradient-to-b from-[#0a0e27] to-[#050816] overflow-hidden">
+        {/* Effet de lumière en fond */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 rounded-full blur-[150px]"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto">
+          {/* Titre de section */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl border border-cyan-400/30 px-6 py-3 rounded-full mb-8 shadow-lg shadow-cyan-500/20">
+              <span className="text-cyan-300 text-sm font-bold tracking-widest">🎯 POUR QUI ?</span>
+            </div>
+            
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+              Conçu pour tous les étudiants
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              La StudyBox s'adapte à tous les profils d'étudiants
+            
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Que vous soyez au lycée, à l'université ou en formation, StudyBox s'adapte à vos besoins
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Profil 1 */}
-            <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+          {/* Grille de profils avec animations au scroll */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Profil 1 - Élèves du secondaire */}
+            <div 
+              className="group relative bg-gradient-to-br from-cyan-900/30 to-blue-900/30 backdrop-blur-xl border border-cyan-500/20 rounded-3xl p-8 hover:scale-105 hover:border-cyan-500/50 transition-all duration-500 overflow-hidden"
+              style={{
+                opacity: scrollY > 800 ? 1 : 0,
+                transform: scrollY > 800 ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'all 0.8s ease-out'
+              }}
+            >
+              {/* Glow effect */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-500/30 rounded-full blur-3xl group-hover:bg-cyan-500/50 transition-all duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-cyan-500/50">
+                  <span className="text-4xl">🎓</span>
+                </div>
+                
+                <h3 className="text-2xl font-black text-white mb-4">Lycéens</h3>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Préparez le CE1D, le CESS ou vos évaluations avec des synthèses claires, des quiz adaptatifs et un planning intelligent pour gérer toutes vos matières.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2 text-cyan-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Préparation Bac optimisée
+                  </li>
+                  <li className="flex items-center gap-2 text-cyan-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Toutes les matières
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-3xl font-bold mb-4 text-center text-black">Étudiants du secondaire </h3>
-              <p className="text-gray-600 text-center leading-relaxed text-lg">
-                Préparez le CE1D ou le CESS avec tous les outils nécessaires pour organiser vos révisions et réussir vos examens
-              </p>
             </div>
 
-            {/* Profil 2 */}
-            <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
+            {/* Profil 2 - Étudiants Université/Étudiants Haute-École */}
+            <div 
+              className="group relative bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-xl border border-blue-500/20 rounded-3xl p-8 hover:scale-105 hover:border-blue-500/50 transition-all duration-500 overflow-hidden"
+              style={{
+                opacity: scrollY > 850 ? 1 : 0,
+                transform: scrollY > 850 ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'all 0.8s ease-out 0.2s'
+              }}
+            >
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/30 rounded-full blur-3xl group-hover:bg-blue-500/50 transition-all duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-blue-500/50">
+                  <span className="text-4xl">📚</span>
+                </div>
+                
+                <h3 className="text-2xl font-black text-white mb-4">Étudiants Université/Étudiants Haute-École</h3>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Gérez vos cours complexes avec l'IA qui génère des synthèses, mindmaps et flashcards automatiquement.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2 text-blue-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Synthèses avancées
+                  </li>
+                  <li className="flex items-center gap-2 text-blue-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Organisation multi-cours
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-3xl font-bold mb-4 text-center text-black">Étudiants du supérieur  </h3>
-              <p className="text-gray-600 text-center leading-relaxed text-lg">
-                Université, haute école, prépa... Optimisez votre organisation et gagnez en efficacité dans vos études
-              </p>
             </div>
 
-            {/* Profil 3 */}
-            <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+            {/* Profil 3 - Étudiants en Formation */}
+            <div 
+              className="group relative bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 hover:scale-105 hover:border-purple-500/50 transition-all duration-500 overflow-hidden"
+              style={{
+                opacity: scrollY > 900 ? 1 : 0,
+                transform: scrollY > 900 ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'all 0.8s ease-out 0.4s'
+              }}
+            >
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl group-hover:bg-purple-500/50 transition-all duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-purple-500/50">
+                  <span className="text-4xl">💼</span>
+                </div>
+                
+                <h3 className="text-2xl font-black text-white mb-4">Formations Pro</h3>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Révisez efficacement entre vos sessions avec des podcasts audio et des flashcards pour mémoriser rapidement.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2 text-purple-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Révision rapide
+                  </li>
+                  <li className="flex items-center gap-2 text-purple-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Apprentissage mobile
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-3xl font-bold mb-4 text-center text-black">Professionnels</h3>
-              <p className="text-gray-600 text-center leading-relaxed text-lg">
-                Formation continue, reconversion... Restez organisé pendant votre parcours d'apprentissage
-              </p>
             </div>
 
-            {/* Profil 4 */}
-            <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <div className="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
+            {/* Profil 4 - Prépa */}
+            <div 
+              className="group relative bg-gradient-to-br from-orange-900/30 to-red-900/30 backdrop-blur-xl border border-orange-500/20 rounded-3xl p-8 hover:scale-105 hover:border-orange-500/50 transition-all duration-500 overflow-hidden"
+              style={{
+                opacity: scrollY > 950 ? 1 : 0,
+                transform: scrollY > 950 ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'all 0.8s ease-out 0.6s'
+              }}
+            >
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-orange-500/30 rounded-full blur-3xl group-hover:bg-orange-500/50 transition-all duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-orange-500/50">
+                  <span className="text-4xl">🚀</span>
+                </div>
+                
+                <h3 className="text-2xl font-black text-white mb-4">Classes Prépa</h3>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Optimisez votre temps avec des outils ultra-performants pour gérer la charge de travail intensive.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2 text-orange-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Gestion intensive
+                  </li>
+                  <li className="flex items-center gap-2 text-orange-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Performance maximale
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-3xl font-bold mb-4 text-center text-black">Autodidactes</h3>
-              <p className="text-gray-600 text-center leading-relaxed text-lg">
-                Apprentissage en ligne, cours particuliers... Structurez votre apprentissage personnel
-              </p>
             </div>
 
-            {/* Profil 5 */}
-            <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+            {/* Profil 5 - Examens & Concours */}
+            <div 
+              className="group relative bg-gradient-to-br from-emerald-900/30 to-green-900/30 backdrop-blur-xl border border-emerald-500/20 rounded-3xl p-8 hover:scale-105 hover:border-emerald-500/50 transition-all duration-500 overflow-hidden"
+              style={{
+                opacity: scrollY > 1000 ? 1 : 0,
+                transform: scrollY > 1000 ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'all 0.8s ease-out 0.8s'
+              }}
+            >
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-500/30 rounded-full blur-3xl group-hover:bg-emerald-500/50 transition-all duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-emerald-500/50">
+                  <span className="text-4xl">🏆</span>
+                </div>
+                
+                <h3 className="text-2xl font-black text-white mb-4">Examens & Concours</h3>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Préparez vos examens avec des quiz ciblés et un système de répétition espacée scientifiquement prouvé.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2 text-emerald-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Quiz adaptatifs
+                  </li>
+                  <li className="flex items-center gap-2 text-emerald-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Méthode scientifique
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-3xl font-bold mb-4 text-center text-black">Élèves du primaire</h3>
-              <p className="text-gray-600 text-center leading-relaxed text-lg">
-                5e et 6e primaire : préparez le CEB avec des outils adaptés pour bien démarrer vos habitudes d'étude
-              </p>
             </div>
 
-            {/* Profil 6 */}
-            <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-              <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
+            {/* Profil 6 - Apprentissage Continu */}
+            <div 
+              className="group relative bg-gradient-to-br from-indigo-900/30 to-violet-900/30 backdrop-blur-xl border border-indigo-500/20 rounded-3xl p-8 hover:scale-105 hover:border-indigo-500/50 transition-all duration-500 overflow-hidden"
+              style={{
+                opacity: scrollY > 1050 ? 1 : 0,
+                transform: scrollY > 1050 ? 'translateY(0)' : 'translateY(50px)',
+                transition: 'all 0.8s ease-out 1s'
+              }}
+            >
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-indigo-500/30 rounded-full blur-3xl group-hover:bg-indigo-500/50 transition-all duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg shadow-indigo-500/50">
+                  <span className="text-4xl">🌟</span>
+                </div>
+                
+                <h3 className="text-2xl font-black text-white mb-4">Apprentissage Continu</h3>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Développez vos compétences à votre rythme avec des outils flexibles adaptés à l'auto-formation.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2 text-indigo-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Rythme personnalisé
+                  </li>
+                  <li className="flex items-center gap-2 text-indigo-300 text-sm">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Flexibilité totale
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-3xl font-bold mb-4 text-center text-black">Parents</h3>
-              <p className="text-gray-600 text-center leading-relaxed text-lg">
-                Offrez à vos enfants les meilleurs outils pour réussir leur parcours scolaire et développer de bonnes habitudes
-              </p>
             </div>
+          </div>
+
+          {/* CTA en bas de section */}
+          <div className="text-center mt-20">
+            <p className="text-gray-400 mb-8 text-lg">
+              Quel que soit votre profil, StudyBox s'adapte à vous
+            </p>
+            <Link 
+              href="/application" 
+              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl text-white font-bold text-lg hover:scale-105 transition-all shadow-2xl shadow-cyan-500/50"
+            >
+              Commencer gratuitement
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Section: Tarifs */}
-      <section id="prix" className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+      {/* Section: Fonctionnalités avec tabs interactifs */}
+      <section className="relative py-32 px-6 bg-[#050816] overflow-hidden">
+        {/* Rayons de lumière */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-black">
-              Tarifs
+            <div className="inline-flex items-center gap-2 bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 px-4 py-2 rounded-full mb-6">
+              <span className="text-blue-300 text-sm font-bold">⚡ FONCTIONNALITÉS</span>
+            </div>
+            
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+              Tout ce dont vous avez besoin
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choisissez la formule qui vous correspond
+            
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Une application complète pour transformer votre façon d'étudier
             </p>
-            
-            {/* Mention légale importante */}
-            <div className="mt-8 bg-studybox-blue/10 border-2 border-studybox-blue/30 rounded-2xl px-6 py-4 max-w-3xl mx-auto">
-              <p className="text-gray-800 text-sm leading-relaxed">
-                <span className="font-semibold text-studybox-blue">StudyBox est un projet de mini-entreprise pédagogique.</span><br />
-                L'achat est réservé aux personnes majeures ou représentants légaux.<br />
-                Le produit est destiné aux élèves du secondaire et aux étudiants.
-              </p>
-            </div>
-            
-            {/* Informations de livraison */}
-            <div className="mt-6 bg-gray-50 border border-gray-200 rounded-2xl px-6 py-4 max-w-3xl mx-auto">
-              <p className="text-gray-800 text-sm leading-relaxed">
-                <span className="font-semibold">📦 Livraison :</span> Belgique uniquement • Délai : 5 à 7 jours ouvrables<br />
-                <span className="font-semibold">🎁 Livraison gratuite</span> dès 3 StudyBox commandées
-              </p>
-            </div>
           </div>
-
-          <div className="max-w-6xl mx-auto mb-8">
-            <div className="grid md:grid-cols-3 gap-10 items-start">
-              {/* Badge vide pour Essentiel */}
-              <div></div>
-              
-              {/* Badge POPULAIRE */}
-              <div className="text-center">
-                <div className="inline-block bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 text-black px-8 py-3 rounded-full text-base font-black shadow-2xl animate-bounce">
-                  ⭐ POPULAIRE ⭐
-                </div>
-              </div>
-              
-              {/* Badge PREMIUM */}
-              <div className="text-center">
-                <div className="inline-block bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 text-black px-8 py-3 rounded-full text-base font-black shadow-2xl">
-                  👑 PREMIUM 👑
-                </div>
-              </div>
-            </div>
+          
+          {/* Tabs */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {['Import', 'Synthèses', 'Quiz', 'Planning', 'Podcast', 'Flashcard', 'Mindmap'].map((tab, index) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(index)}
+                className={`px-8 py-4 rounded-xl font-bold transition-all ${
+                  activeTab === index
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
-
-          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto items-stretch">
-            {/* Formule Essentiel - Simple et discret */}
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-2xl hover:border-gray-300 hover:shadow-lg transition-all duration-300 relative flex flex-col">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold mb-1 text-gray-700">Essentiel</h3>
-                <p className="text-sm text-gray-500 mb-4">Pour bien démarrer</p>
-                <div className="text-4xl font-bold text-studybox-blue mb-1">15€</div>
-                <p className="text-xs text-gray-400">Paiement unique</p>
-              </div>
-              <ul className="space-y-2.5 mb-6 text-sm flex-grow">
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-600">Accès à l'application 100% intelligente</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-600">Assortiment de post-it transparents et marque-pages</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-600">Pack de fiches de révision (20 pcs)</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-600">Bons de réductions chez nos partenaires</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-600">Matériel pour s'organiser et réussir ses études</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-600">1 canette Buddy Focus incluse</span>
-                </li>
-              </ul>
-              <Link href="/commander" className="block w-full bg-studybox-blue text-white py-3 rounded-full text-sm font-semibold hover:bg-studybox-blue/90 transition-all duration-200 text-center mt-auto">
-                Commander
-              </Link>
-            </div>
-
-            {/* Formule Personnalisée - ULTRA SPECTACULAIRE */}
-            <div className="relative group z-10 flex flex-col">
-              {/* Halo lumineux animé */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 animate-pulse"></div>
-              
-              <div className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-10 rounded-3xl shadow-[0_25px_90px_-15px_rgba(168,85,247,0.9)] border-[6px] border-yellow-400 overflow-hidden flex flex-col h-full">
-                {/* Effet shimmer animé */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-[shimmer_3s_ease-in-out_infinite]"></div>
-                
-                <div className="relative z-10">
-                  <div className="text-center mb-8">
-                    <h3 className="text-3xl font-black mb-2 text-white tracking-tight">Personnalisée</h3>
-                    <p className="text-lg text-white/90 mb-6 font-medium">La formule avec votre touche personnelle</p>
-                    <div className="text-6xl font-black text-yellow-300 mb-2 drop-shadow-[0_0_20px_rgba(253,224,71,0.9)]">25€</div>
-                    <p className="text-yellow-200 font-semibold">Paiement unique</p>
-                  </div>
-                  
-                  <ul className="space-y-3 mb-8 flex-grow">
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-300 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Tout de la formule Essentiel</span>
+          
+          {/* Contenu des tabs */}
+          <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-xl border border-blue-500/20 rounded-3xl p-12">
+            {activeTab === 0 && (
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl font-black text-white mb-6">Import intelligent</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    Importez vos cours en PDF, photos ou documents. L'IA analyse automatiquement le contenu pour créer vos supports de révision.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      PDF, images, documents Word
                     </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-300 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Personnalisation du prénom sur la boîte</span>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Reconnaissance automatique du contenu
                     </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-300 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Cahier de notes premium en plus</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-300 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Fiches de révision (50 pcs)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-300 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Matériel pour s'organiser et réussir ses études</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-300 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">1 canette Buddy Focus incluse</span>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Organisation automatique par matière
                     </li>
                   </ul>
-                  
-                  <Link href="/commander" className="block w-full bg-white text-purple-700 py-5 rounded-2xl text-lg font-black hover:bg-yellow-50 hover:shadow-[0_15px_50px_-10px_rgba(255,255,255,0.9)] transition-all duration-300 hover:scale-105 text-center shadow-xl mt-auto">
-                    COMMANDER
-                  </Link>
+                </div>
+                <div className="relative aspect-square bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center">
+                  <span className="text-8xl">📚</span>
                 </div>
               </div>
-            </div>
-
-            {/* Formule Premium - Luxe noir et or */}
-            <div className="relative group flex flex-col">
-              {/* Halo doré */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
-              
-              <div className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-black p-9 rounded-3xl shadow-[0_25px_70px_-15px_rgba(234,179,8,0.6)] border-4 border-yellow-500 hover:border-yellow-400 hover:shadow-[0_25px_90px_-10px_rgba(234,179,8,0.9)] transition-all duration-300 overflow-hidden flex flex-col h-full">
-                {/* Effet radial doré */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(250,204,21,0.15),transparent_60%)]"></div>
-                
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="text-center mb-8">
-                    <h3 className="text-3xl font-black mb-2 text-white tracking-tight">Premium</h3>
-                    <p className="text-lg text-gray-200 mb-6 font-medium">L'expérience complète</p>
-                    <div className="text-6xl font-black text-yellow-400 mb-2 drop-shadow-[0_0_25px_rgba(250,204,21,1)]">35€</div>
-                    <p className="text-yellow-300 font-semibold">Paiement unique</p>
-                  </div>
-                  
-                  <ul className="space-y-3 mb-8 flex-grow">
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Tout de la formule Personnalisée</span>
+            )}
+            
+            {activeTab === 1 && (
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl font-black text-white mb-6">Synthèses IA</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    Générez des synthèses et résumés de cours en quelques secondes. L'IA extrait les points clés et les organise de manière claire.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Résumés structurés et clairs
                     </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Accès application premium à vie</span>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Points clés mis en évidence
                     </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">2 canettes Buddy Focus de goûts différents</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Fiches de révision (100 pcs)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Livraison expresse gratuite</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Support client prioritaire</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-6 h-6 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white font-bold text-base">Matériel pour s'organiser et réussir ses études</span>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Format optimisé pour la révision
                     </li>
                   </ul>
-                  
-                  <Link href="/commander" className="block w-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-black py-5 rounded-2xl text-lg font-black hover:from-yellow-300 hover:to-yellow-500 shadow-[0_15px_40px_-10px_rgba(234,179,8,0.9)] hover:shadow-[0_15px_60px_-5px_rgba(234,179,8,1)] transition-all duration-300 hover:scale-105 text-center mt-auto">
-                    COMMANDER
-                  </Link>
+                </div>
+                <div className="relative aspect-square bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center">
+                  <span className="text-8xl">✨</span>
                 </div>
               </div>
-            </div>
+            )}
+            
+            {activeTab === 2 && (
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl font-black text-white mb-6">Quiz adaptatifs</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    Testez vos connaissances avec des quiz générés automatiquement. L'IA s'adapte à votre niveau et cible vos points faibles.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Questions personnalisées
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Difficulté adaptative
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Feedback instantané
+                    </li>
+                  </ul>
+                </div>
+                <div className="relative aspect-square bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center">
+                  <span className="text-8xl">🎯</span>
+                </div>
+              </div>
+            )}
+            
+            {activeTab === 3 && (
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl font-black text-white mb-6">Planning intelligent</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    Organisez vos révisions avec un planning intelligent qui s'adapte à vos examens et à votre rythme d'apprentissage.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Calendrier personnalisé
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Rappels automatiques
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Optimisation du temps
+                    </li>
+                  </ul>
+                </div>
+                <div className="relative aspect-square bg-gradient-to-br from-pink-500/20 to-red-500/20 rounded-2xl flex items-center justify-center">
+                  <span className="text-8xl">📅</span>
+                </div>
+              </div>
+            )}
+            
+            {activeTab === 4 && (
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl font-black text-white mb-6">Podcast de révision</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    Transformez vos cours en podcasts audio pour réviser en déplacement. L'IA génère des contenus audio optimisés pour la mémorisation.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Conversion automatique en audio
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Voix naturelle et claire
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Écoute hors ligne
+                    </li>
+                  </ul>
+                </div>
+                <div className="relative aspect-square bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl flex items-center justify-center">
+                  <span className="text-8xl">🎙️</span>
+                </div>
+              </div>
+            )}
+            
+            {activeTab === 5 && (
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl font-black text-white mb-6">Flashcards intelligentes</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    Créez automatiquement des flashcards à partir de vos cours. Système de répétition espacée pour une mémorisation optimale.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Génération automatique
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Répétition espacée (Anki)
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Suivi de progression
+                    </li>
+                  </ul>
+                </div>
+                <div className="relative aspect-square bg-gradient-to-br from-emerald-500/20 to-green-500/20 rounded-2xl flex items-center justify-center">
+                  <span className="text-8xl">🃏</span>
+                </div>
+              </div>
+            )}
+            
+            {activeTab === 6 && (
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-4xl font-black text-white mb-6">Mind Maps visuelles</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    Visualisez vos cours sous forme de cartes mentales interactives. L'IA structure automatiquement les concepts et leurs relations.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Création automatique
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Visualisation interactive
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-300">
+                      <div className="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      Export et partage
+                    </li>
+                  </ul>
+                </div>
+                <div className="relative aspect-square bg-gradient-to-br from-indigo-500/20 to-violet-500/20 rounded-2xl flex items-center justify-center">
+                  <span className="text-8xl">🧩</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Section: Pensée pour les étudiants */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-black">
-              Pensée pour les étudiants
+      {/* Section: Tarifs - Offre Limitée */}
+      <section id="prix" className="relative py-32 px-6 bg-gradient-to-b from-[#050816] via-[#0a0e27] to-[#050816] overflow-hidden">
+        {/* Grille de fond animée */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'linear-gradient(rgba(6,182,212,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.5) 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+            animation: 'grid-move 20s linear infinite'
+          }}></div>
+        </div>
+
+        {/* Orbes lumineux flottants */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-full blur-[120px] animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-rose-500/20 to-pink-500/20 rounded-full blur-[120px] animate-float-slow" style={{animationDelay: '2s'}}></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          {/* En-tête de section */}
+          <div className="text-center mb-20">
+            {/* Badge animé */}
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/10 to-orange-500/10 backdrop-blur-xl border border-amber-500/20 px-6 py-3 rounded-full mb-8 group hover:border-amber-500/40 transition-all duration-500">
+              <div className="relative flex items-center justify-center">
+                <div className="absolute w-2 h-2 bg-amber-500 rounded-full animate-ping"></div>
+                <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+              </div>
+              <span className="text-amber-400 text-sm font-bold tracking-[0.2em] uppercase">Offre de Lancement</span>
+            </div>
+            
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 tracking-tight">
+              <span className="block">Tarif</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">
+                Exceptionnel
+              </span>
             </h2>
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
-              Élégante. Utile. Essentielle.
+            
+            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Une opportunité unique réservée aux premiers utilisateurs
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Photo 1 - Gauche */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-              <div className="aspect-square relative flex items-center justify-center p-4">
-                <img 
-                  src="/images/photoboitediagonale.png" 
-                  alt="StudyBox vue diagonale"
-                  className="w-full h-full object-contain"
-                />
+          {/* Carte de tarif principale */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Effet de brillance animé en arrière-plan */}
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-[2rem] opacity-0 group-hover:opacity-100 blur-xl transition-all duration-700"></div>
+            
+            {/* Carte */}
+            <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-2xl border border-white/10 rounded-[2rem] overflow-hidden group hover:border-amber-500/30 transition-all duration-700">
+              {/* Effet de lumière qui traverse */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-shimmer"></div>
+              </div>
+
+              {/* Contenu */}
+              <div className="relative p-8 md:p-12 lg:p-16">
+                {/* Grille de 2 colonnes pour desktop */}
+                <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+                  {/* Colonne gauche - Prix */}
+                  <div className="text-center lg:text-left space-y-6">
+                    {/* Badge premium */}
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-2 rounded-xl shadow-lg shadow-amber-500/30">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <span className="text-white font-black text-xs uppercase tracking-wider">Offre Premium</span>
+                    </div>
+                    
+                    {/* Prix */}
+                    <div>
+                      <div className="flex items-baseline justify-center lg:justify-start gap-3 mb-3">
+                        <span className="text-7xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-br from-amber-400 via-orange-400 to-rose-400 leading-none">
+                          10€
+                        </span>
+                      </div>
+                      <p className="text-2xl md:text-3xl font-bold text-white mb-2">
+                        Accès à vie
+                      </p>
+                      <p className="text-lg text-gray-400">
+                        Un seul paiement • Aucun abonnement
+                      </p>
+                    </div>
+
+                    {/* Économies */}
+                    <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-xl">
+                      <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                      <span className="text-emerald-400 font-semibold text-sm">Économisez 80% sur le long terme</span>
+                    </div>
+                  </div>
+
+                  {/* Colonne droite - Alerte temporelle */}
+                  <div className="space-y-6">
+                    {/* Compte à rebours visuel */}
+                    <div className="relative bg-gradient-to-br from-rose-500/10 to-orange-500/10 backdrop-blur-sm border border-rose-500/20 rounded-2xl p-8 overflow-hidden group/timer hover:border-rose-500/40 transition-all duration-500">
+                      {/* Effet de pulse */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-rose-500/5 to-orange-500/5 animate-pulse"></div>
+                      
+                      <div className="relative space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="relative">
+                            <svg className="w-10 h-10 text-rose-400 animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-2 h-2 bg-rose-400 rounded-full animate-pulse"></div>
+                            </div>
+                          </div>
+                          <div>
+                            <p className="text-rose-300 font-black text-xl uppercase tracking-wider">Offre limitée</p>
+                            <p className="text-gray-400 text-sm">Se termine bientôt</p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <p className="text-3xl font-black text-white">
+                            Jusqu'au 1<sup className="text-lg">er</sup> juin 2026
+                          </p>
+                          <p className="text-gray-300 leading-relaxed">
+                            Tous les achats avant cette date bénéficient du tarif unique de <span className="font-bold text-amber-400">10€ à vie</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Info après la date */}
+                    <div className="bg-gray-800/50 border border-gray-700/50 rounded-xl p-6">
+                      <p className="text-gray-400 text-sm mb-2">Après le 1er juin 2026</p>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-black text-gray-300">4,99€</span>
+                        <span className="text-gray-500 font-medium">/mois</span>
+                      </div>
+                      <p className="text-gray-500 text-sm mt-1">Abonnement mensuel</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="relative my-12">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-700/50"></div>
+                  </div>
+                  <div className="relative flex justify-center">
+                    <span className="bg-gray-900 px-4 text-gray-500 text-sm uppercase tracking-wider">Inclus</span>
+                  </div>
+                </div>
+
+                {/* Avantages en grille */}
+                <div className="grid md:grid-cols-2 gap-6 mb-12">
+                  {[
+                    { icon: '✨', title: 'Toutes les fonctionnalités', desc: 'Accès complet et illimité' },
+                    { icon: '🔄', title: 'Mises à jour gratuites', desc: 'Toutes les nouvelles features' },
+                    { icon: '⚡', title: 'Support prioritaire', desc: 'Réponse rapide garantie' },
+                    { icon: '🔒', title: 'Aucun frais caché', desc: 'Prix fixe, transparent' }
+                  ].map((item, index) => (
+                    <div 
+                      key={index}
+                      className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 hover:border-amber-500/30 hover:bg-white/10 transition-all duration-500 group/item"
+                      style={{
+                        animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                      }}
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform duration-500">
+                        <span className="text-2xl">{item.icon}</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-white font-bold text-lg mb-1">{item.title}</h4>
+                        <p className="text-gray-400 text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <div className="text-center space-y-6">
+                  <Link 
+                    href="/commander" 
+                    className="group/btn relative inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-2xl text-white font-black text-lg overflow-hidden hover:scale-105 transition-all duration-500 shadow-2xl shadow-orange-500/30 hover:shadow-orange-500/50"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"></div>
+                    <span className="relative z-10 flex items-center gap-4">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      Profiter de l'offre maintenant
+                      <svg className="w-6 h-6 group-hover/btn:translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </Link>
+                  
+                  <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    Paiement sécurisé • Satisfaction garantie
+                  </p>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Photo 2 - Milieu */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-              <div className="aspect-square relative flex items-center justify-center p-4">
-                <img 
-                  src="/images/photodessusboite.png" 
-                  alt="StudyBox vue de dessus"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Photo 3 - Droite */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-              <div className="aspect-square relative flex items-center justify-center p-4">
-                <img 
-                  src="/images/photoboiteouverte.png" 
-                  alt="StudyBox ouverte"
-                  className="w-full h-full object-contain"
-                />
+          {/* Note explicative */}
+          <div className="max-w-3xl mx-auto mt-16">
+            <div className="relative bg-gradient-to-br from-blue-500/5 to-cyan-500/5 backdrop-blur-sm border border-blue-500/10 rounded-2xl p-8 overflow-hidden group/note hover:border-blue-500/30 transition-all duration-500">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+              <div className="relative flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-blue-400 font-bold text-lg mb-2">Pourquoi cette offre exceptionnelle ?</h4>
+                  <p className="text-gray-300 leading-relaxed">
+                    À l'origine, StudyBox est un projet de mini-entreprise. Pour remercier nos premiers utilisateurs qui nous soutiennent dès cette phase de lancement, nous proposons un tarif unique. 
+                    Après le <span className="font-semibold text-white">1er juin 2026</span>, StudyBox évoluera en entreprise à part entière et passera à un modèle d'abonnement mensuel à <span className="font-semibold text-white">4,99€/mois</span>. 
+                    C'est votre chance unique d'obtenir un accès à vie à un prix exceptionnel !
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -592,16 +1087,28 @@ export default function StudyBoxPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-24 px-6 bg-gradient-to-br from-blue-600 to-purple-700">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+      <section className="relative py-32 px-6 bg-gradient-to-b from-[#0a0e27] to-[#050816] overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-purple-500/5"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
             Prêt à transformer vos études ?
           </h2>
-          <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-            Rejoignez des centaines d'étudiants qui ont déjà choisi la StudyBox pour réussir
+          
+          <p className="text-xl text-gray-400 mb-12">
+            Rejoignez plus de 1000 étudiants qui utilisent déjà StudyBox
           </p>
-          <Link href="/commander" className="bg-white text-purple-600 px-12 py-5 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-2xl inline-block">
-            Commander maintenant
+          
+          <Link 
+            href="/application" 
+            className="inline-flex items-center gap-3 px-12 py-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:scale-105 transition-all shadow-2xl shadow-cyan-500/50"
+          >
+            Acheter l'application
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </Link>
         </div>
       </section>

@@ -138,7 +138,7 @@ export default function ActualitesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Événement Futur 1 - Vente de L'Esplanade */}
+            {/* Événement Futur 1 - Shopping de Nivelles */}
             <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-green-200">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -148,10 +148,10 @@ export default function ActualitesPage() {
                 </div>
                 <div className="ml-6">
                   <div className="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mb-2">À VENIR</div>
-                  <div className="text-sm text-green-600 font-semibold mb-2">31 janvier 2026</div>
-                  <h3 className="text-2xl font-bold mb-3 text-black">Vente de L'Esplanade</h3>
+                  <div className="text-sm text-green-600 font-semibold mb-2">28 mars 2026</div>
+                  <h3 className="text-2xl font-bold mb-3 text-black">Shopping de Nivelles</h3>
                   <a 
-                    href="https://www.google.com/maps/search/?api=1&query=Pl.+de+l'Accueil+10,+1348+Ottignies-Louvain-la-Neuve" 
+                    href="https://www.google.com/maps/search/?api=1&query=Chau.+de+Mons+18A,+1400+Nivelles" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 mb-3 text-gray-600 hover:text-green-600 transition-colors group"
@@ -160,17 +160,17 @@ export default function ActualitesPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="text-sm hover:underline">Pl. de l'Accueil 10, 1348 Ottignies-Louvain-la-Neuve</span>
+                    <span className="text-sm hover:underline">Chau. de Mons 18A, 1400 Nivelles</span>
                   </a>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                    Retrouvez-nous à la vente de L'Esplanade de Louvain-la-Neuve. Plus d'informations bientôt !
+                    Retrouvez-nous au Shopping de Nivelles pour découvrir StudyBox et profiter de nos offres spéciales !
                   </p>
                   <a href="#" className="text-green-600 font-semibold hover:underline">En savoir plus →</a>
                 </div>
               </div>
             </div>
 
-            {/* Événement Futur 2 - Congrès des Minis entreprises */}
+            {/* Événement Futur 2 - Westland Shopping */}
             <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-200">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -180,10 +180,10 @@ export default function ActualitesPage() {
                 </div>
                 <div className="ml-6">
                   <div className="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full mb-2">À VENIR</div>
-                  <div className="text-sm text-blue-600 font-semibold mb-2">07 février 2026</div>
-                  <h3 className="text-2xl font-bold mb-3 text-black">Congrès des Minis entreprises</h3>
+                  <div className="text-sm text-blue-600 font-semibold mb-2">11 avril 2026</div>
+                  <h3 className="text-2xl font-bold mb-3 text-black">Westland Shopping</h3>
                   <a 
-                    href="https://www.google.com/maps/search/?api=1&query=Stade+Roi+Baudouin,+Marathonlaan+135/2,+1020+Brussel" 
+                    href="https://www.google.com/maps/search/?api=1&query=Boulevard+Sylvain+Dupuis+433,+1070+Anderlecht" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 mb-3 text-gray-600 hover:text-blue-600 transition-colors group"
@@ -192,12 +192,12 @@ export default function ActualitesPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="text-sm hover:underline">Stade Roi Baudouin, Marathonlaan 135/2, 1020 Brussel</span>
+                    <span className="text-sm hover:underline">Boulevard Sylvain Dupuis 433, 1070 Anderlecht</span>
                   </a>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                    Venez découvrir StudyBox au Congrès des Minis entreprises.
+                    Venez nous rencontrer au Westland Shopping, l'un des plus grands centres commerciaux de Bruxelles !
                   </p>
-                  <a href="https://www.lje.be/fr/news/congres_des_mini_entreprises" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold hover:underline">En savoir plus →</a>
+                  <a href="#" className="text-blue-600 font-semibold hover:underline">En savoir plus →</a>
                 </div>
               </div>
             </div>
@@ -218,7 +218,69 @@ export default function ActualitesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Événement Passé 1 - Le Passage Wellington */}
+            {/* Événement Passé 1 - Vente de L'Esplanade */}
+            <div className="bg-gray-50 p-10 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 opacity-90">
+              <div className="flex items-start mb-6">
+                <div className="w-16 h-16 bg-gray-200 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="ml-6">
+                  <div className="inline-block bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-full mb-2">TERMINÉ</div>
+                  <div className="text-sm text-gray-500 font-semibold mb-2">31 JANVIER 2026</div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-700">Vente de L'Esplanade</h3>
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Pl.+de+l'Accueil+10,+1348+Ottignies-Louvain-la-Neuve" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 mb-3 text-gray-600 hover:text-gray-700 transition-colors group"
+                  >
+                    <svg className="w-4 h-4 text-gray-500 group-hover:text-gray-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span className="text-sm hover:underline">Pl. de l'Accueil 10, 1348 Ottignies-Louvain-la-Neuve</span>
+                  </a>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Merci à tous ceux qui sont venus nous rencontrer à la vente de L'Esplanade de Louvain-la-Neuve !
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Événement Passé 2 - Congrès des Minis entreprises */}
+            <div className="bg-gray-50 p-10 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 opacity-90">
+              <div className="flex items-start mb-6">
+                <div className="w-16 h-16 bg-gray-200 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="ml-6">
+                  <div className="inline-block bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-full mb-2">TERMINÉ</div>
+                  <div className="text-sm text-gray-500 font-semibold mb-2">07 FÉVRIER 2026</div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-700">Congrès des Minis entreprises</h3>
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Stade+Roi+Baudouin,+Marathonlaan+135/2,+1020+Brussel" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 mb-3 text-gray-600 hover:text-gray-700 transition-colors group"
+                  >
+                    <svg className="w-4 h-4 text-gray-500 group-hover:text-gray-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span className="text-sm hover:underline">Stade Roi Baudouin, Marathonlaan 135/2, 1020 Brussel</span>
+                  </a>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Merci à tous les visiteurs du Congrès des Minis entreprises !
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Événement Passé 3 - Le Passage Wellington */}
             <div className="bg-gray-50 p-10 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 opacity-90">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-gray-200 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -310,27 +372,51 @@ export default function ActualitesPage() {
           </div>
 
           <div className="space-y-8 max-w-4xl mx-auto">
-            {/* Nouveauté 1 - Nouveaux produits */}
-            <div id="nouveaux-produits" className="bg-gradient-to-r from-blue-50 to-purple-50 p-10 rounded-3xl hover:shadow-xl transition-all duration-300">
+            {/* Nouveauté 1 - Nouvelles langues dans l'application */}
+            <div id="nouvelles-langues" className="bg-gradient-to-r from-blue-50 to-purple-50 p-10 rounded-3xl hover:shadow-xl transition-all duration-300">
               <div className="flex items-start">
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                   </svg>
                 </div>
                 <div className="ml-8 flex-1">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="text-sm text-blue-600 font-semibold">NOUVEAU PRODUIT</div>
-                    <div className="text-sm text-gray-500">Il y a 2 jours</div>
+                    <div className="text-sm text-blue-600 font-semibold">MISE À JOUR MAJEURE</div>
+                    <div className="text-sm text-gray-500">Aujourd'hui</div>
                   </div>
                   <h3 className="text-3xl font-bold mb-4 text-black">
-                    Nouvelle collection StudyBox Premium
+                    Polonais et Portugais arrivent sur StudyBox !
                   </h3>
-                  <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                    Découvrez notre nouvelle gamme de produits premium avec des matériaux encore plus qualitatifs et un design repensé pour une expérience d'étude optimale.
+                  <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                    Nous sommes ravis d'annoncer l'ajout du polonais et du portugais dans l'application StudyBox ! Désormais, plus de 400 millions d'étudiants supplémentaires peuvent utiliser StudyBox dans leur langue maternelle.
                   </p>
-                  <Link href="/premium" className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-200">
-                    Découvrir la collection
+                  <div className="bg-white/50 rounded-2xl p-6 mb-6">
+                    <h4 className="text-xl font-semibold mb-3 text-black">🌍 4 langues maintenant disponibles</h4>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">🇫🇷</span>
+                        <span className="font-medium">Français</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">🇬🇧</span>
+                        <span className="font-medium">English</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">🇵🇱</span>
+                        <span className="font-medium">Polski</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">🇵🇹</span>
+                        <span className="font-medium">Português</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                    Cette mise à jour s'inscrit dans notre mission de rendre l'éducation accessible à tous les étudiants européens. Interface traduite, contenus adaptés, et support client multilingue : tout est pensé pour vous offrir la meilleure expérience possible.
+                  </p>
+                  <Link href="/application" className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-200">
+                    Télécharger l'application
                   </Link>
                 </div>
               </div>
@@ -350,10 +436,10 @@ export default function ActualitesPage() {
                     <div className="text-sm text-gray-500">Il y a 1 semaine</div>
                   </div>
                   <h3 className="text-3xl font-bold mb-4 text-black">
-                    Application v2.0 bientôt disponible
+                    Application v2.0 : Polonais & Portugais ajoutés
                   </h3>
                   <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                    Nouvelle interface, mode sombre, synchronisation cloud et bien plus encore. Découvrez toutes les nouveautés qui arrivent très bientôt.
+                    Nouvelle interface, mode sombre, synchronisation cloud et surtout le support du polonais et du portugais ! StudyBox s'adapte parfaitement aux étudiants internationaux avec 4 langues maintenant disponibles.
                   </p>
                   <Link href="/mise-a-jour-v2" className="inline-block bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-200">
                     Découvrir la mise à jour
@@ -376,10 +462,10 @@ export default function ActualitesPage() {
                     <div className="text-sm text-gray-500">Il y a 2 semaines</div>
                   </div>
                   <h3 className="text-3xl font-bold mb-4 text-black">
-                    Nouveaux partenaires : Commerces & Services
+                    Partenariats internationaux et multilingues
                   </h3>
                   <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                    StudyBox s'associe avec de nombreux restaurants, clubs de sports et services étudiants pour offrir des réductions exclusives. Découvrez tous nos partenaires dès maintenant.
+                    Avec l'ajout du polonais et du portugais, StudyBox étend ses partenariats internationaux ! Découvrez nos nouveaux partenaires européens et profitez de réductions exclusives, le tout dans votre langue préférée.
                   </p>
                   <Link href="/partenaires" className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-200">
                     Découvrir nos partenaires

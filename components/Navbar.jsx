@@ -82,23 +82,13 @@ export default function Navbar() {
                 <div className="fixed left-0 right-0 top-16 z-40 animate-[slideDown_0.3s_ease-out]" onMouseEnter={() => setStudyboxOpen(true)} onMouseLeave={() => setStudyboxOpen(false)}>
                   <div className="w-full bg-white/80 backdrop-blur-xl shadow-2xl" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
                     <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
-                      <div className="grid grid-cols-3 gap-16">
+                      <div className="grid grid-cols-2 gap-16">
                         <div className="animate-[fadeInUp_0.4s_ease-out]">
                           <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.discover')}</h3>
                           <ul className="space-y-4">
                             <li className="animate-[fadeInUp_0.5s_ease-out]"><Link href="/studybox" className="text-2xl font-semibold hover:opacity-70 transition-opacity block text-black">{t('nav.theStudybox')}</Link></li>
-                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/studybox#contenu" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.whatContains')}</Link></li>
                             <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/studybox#pour-qui" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.forWho')}</Link></li>
                             <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/studybox#prix" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.pricing')}</Link></li>
-                          </ul>
-                        </div>
-                        <div className="animate-[fadeInUp_0.45s_ease-out]">
-                          <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.buyMenu')}</h3>
-                          <ul className="space-y-4">
-                            <li className="animate-[fadeInUp_0.5s_ease-out]"><Link href="/commander" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.orderNow')}</Link></li>
-                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/offres" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.offersPromo')}</Link></li>
-                            <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/livraison" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.deliveryReturns')}</Link></li>
-                            <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/paiement" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.paymentMethods')}</Link></li>
                           </ul>
                         </div>
                         <div className="animate-[fadeInUp_0.5s_ease-out]">
@@ -450,22 +440,11 @@ export default function Navbar() {
                       <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.discover')}</h4>
                       <div className="space-y-2">
                         <Link href="/studybox" className="block py-2 text-xl font-medium text-black hover:text-gray-600" onClick={() => setMobileMenuOpen(false)}>{t('nav.theStudybox')}</Link>
-                        <Link href="/studybox#contenu" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.whatContains')}</Link>
                         <Link href="/studybox#pour-qui" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.forWho')}</Link>
                         <Link href="/studybox#prix" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.pricing')}</Link>
                       </div>
                     </div>
-                    {/* Section Acheter */}
-                    <div className="pl-4">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.buyMenu')}</h4>
-                      <div className="space-y-2">
-                        <Link href="/commander" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.orderNow')}</Link>
-                        <Link href="/offres" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.offersPromo')}</Link>
-                        <Link href="/livraison" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.deliveryReturns')}</Link>
-                        <Link href="/paiement" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.paymentMethods')}</Link>
-                      </div>
-                    </div>
-                    {/* Section Pourquoi StudyBox */}
+                                        {/* Section Pourquoi StudyBox */}
                     <div className="pl-4">
                       <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.whyStudybox')}</h4>
                       <div className="space-y-2">
