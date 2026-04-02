@@ -19,7 +19,7 @@ export default function Footer() {
             </p>
           </div>
           
-          <p className="text-gray-400">© 2024 StudyBox. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}</p>
+          <p className="text-gray-400">© 2026 StudyBox. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}</p>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <Link href="/legal#mentions-legales" className="text-gray-400 hover:text-white transition-colors">
               {language === 'fr' ? 'Mentions légales' : 'Legal Notice'}

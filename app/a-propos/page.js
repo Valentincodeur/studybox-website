@@ -9,19 +9,19 @@ export default function AProposPage() {
       name: 'Nathan',
       role: 'Directeur Marketing',
       description: 'Spécialiste en communication et stratégie digitale. Il développe la visibilité de StudyBox et crée des campagnes engageantes pour toucher les étudiants.',
-      photo: '/images/Photo Nathan.jpg'
+      photo: '/images/nathanbg.png'
     },
     {
       name: 'Valentin',
       role: 'CIO de l\'entreprise',
       description: 'Visionnaire et leader stratégique. Il coordonne l\'ensemble des opérations de l\'entreprise et assure l\'alignement de l\'équipe avec la mission de StudyBox.',
-      photo: '/images/PhotoValentin.JPG'
+      photo: '/images/valentinbg.png'
     },
     {
       name: 'Timéo',
       role: 'Directeur financier',
       description: 'Expert en gestion financière et budgétisation. Il veille à la santé économique de StudyBox et optimise les investissements pour garantir la pérennité du projet.',
-      photo: '/images/PhotoTiméo.jpg'
+      photo: '/images/timeobg.png'
     },
     {
       name: 'François',
@@ -61,12 +61,13 @@ export default function AProposPage() {
                     StudyBox est née d'un constat simple : les étudiants doivent apprendre énormément de matière, mais on ne leur explique presque jamais comment bien étudier. En tant qu'étudiants, nous avons nous-mêmes été confrontés à ce manque de méthodes et d'organisation.
                   </p>
                   <p>
-                    C'est en 2024, dans le cadre d'une mini-entreprise (LJE
-                    
-                    ), que l'idée a vu le jour. Trois étudiants motivés ont décidé de créer une solution concrète pour aider les étudiants à mieux apprendre et mieux s'organiser.
+                    C'est en 2025, dans le cadre d'une mini-entreprise (LJE), que l'idée a vu le jour. Trois étudiants motivés ont décidé de créer une solution concrète pour aider les étudiants à mieux apprendre et mieux s'organiser. Au départ, StudyBox se présentait sous forme de box physique contenant des outils d'organisation et de méthodologie d'étude.
                   </p>
                   <p>
-                    Aujourd'hui, StudyBox, ce n'est pas seulement une box : c'est un écosystème combinant des outils physiques et une application, pensé pour accompagner les étudiants dans leur réussite académique.
+                    Face à l'évolution des besoins des étudiants et aux nouvelles technologies, StudyBox a décidé de faire évoluer son modèle. Aujourd'hui, StudyBox est devenue une application mobile complète qui intègre toutes les fonctionnalités nécessaires pour réussir ses études : organisation, planning, fiches de révision, quiz interactifs, et bien plus encore.
+                  </p>
+                  <p>
+                    Cette transition vers le 100% digital nous permet d'offrir une solution plus accessible, plus flexible et plus puissante pour accompagner les étudiants dans leur réussite académique.
                   </p>
                 </div>
               </div>

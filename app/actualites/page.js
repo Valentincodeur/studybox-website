@@ -138,39 +138,7 @@ export default function ActualitesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Événement Futur 1 - Shopping de Nivelles */}
-            <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-green-200">
-              <div className="flex items-start mb-6">
-                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div className="ml-6">
-                  <div className="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mb-2">À VENIR</div>
-                  <div className="text-sm text-green-600 font-semibold mb-2">28 mars 2026</div>
-                  <h3 className="text-2xl font-bold mb-3 text-black">Shopping de Nivelles</h3>
-                  <a 
-                    href="https://www.google.com/maps/search/?api=1&query=Chau.+de+Mons+18A,+1400+Nivelles" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 mb-3 text-gray-600 hover:text-green-600 transition-colors group"
-                  >
-                    <svg className="w-4 h-4 text-gray-500 group-hover:text-green-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <span className="text-sm hover:underline">Chau. de Mons 18A, 1400 Nivelles</span>
-                  </a>
-                  <p className="text-gray-600 leading-relaxed mb-4">
-                    Retrouvez-nous au Shopping de Nivelles pour découvrir StudyBox et profiter de nos offres spéciales !
-                  </p>
-                  <a href="#" className="text-green-600 font-semibold hover:underline">En savoir plus →</a>
-                </div>
-              </div>
-            </div>
-
-            {/* Événement Futur 2 - Westland Shopping */}
+            {/* Événement Futur 1 - Westland Shopping */}
             <div className="bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-200">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -218,7 +186,38 @@ export default function ActualitesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Événement Passé 1 - Vente de L'Esplanade */}
+            {/* Événement Passé 1 - Shopping de Nivelles */}
+            <div className="bg-gray-50 p-10 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 opacity-90">
+              <div className="flex items-start mb-6">
+                <div className="w-16 h-16 bg-gray-200 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="ml-6">
+                  <div className="inline-block bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-full mb-2">TERMINÉ</div>
+                  <div className="text-sm text-gray-500 font-semibold mb-2">28 MARS 2026</div>
+                  <h3 className="text-2xl font-bold mb-3 text-gray-700">Shopping de Nivelles</h3>
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Chau.+de+Mons+18A,+1400+Nivelles" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 mb-3 text-gray-600 hover:text-gray-700 transition-colors group"
+                  >
+                    <svg className="w-4 h-4 text-gray-500 group-hover:text-gray-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span className="text-sm hover:underline">Chau. de Mons 18A, 1400 Nivelles</span>
+                  </a>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Merci à tous ceux qui sont venus nous rencontrer au Shopping de Nivelles !
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Événement Passé 2 - Vente de L'Esplanade */}
             <div className="bg-gray-50 p-10 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 opacity-90">
               <div className="flex items-start mb-6">
                 <div className="w-16 h-16 bg-gray-200 rounded-2xl flex items-center justify-center flex-shrink-0">

@@ -15,8 +15,8 @@ export default function QualitePage() {
       ),
       title: language === 'fr' ? 'Qualité premium' : 'Premium quality',
       description: language === 'fr' 
-        ? 'Nous sélectionnons uniquement des produits de haute qualité, testés et approuvés par notre équipe avant d\'être inclus dans nos box.' 
-        : 'We select only high-quality products, tested and approved by our team before being included in our boxes.',
+        ? 'Notre application est développée avec les meilleures technologies et testée rigoureusement pour garantir une expérience utilisateur optimale.' 
+        : 'Our application is developed with the best technologies and rigorously tested to guarantee an optimal user experience.',
     },
     {
       icon: (
@@ -26,8 +26,8 @@ export default function QualitePage() {
       ),
       title: language === 'fr' ? 'Éco-responsable' : 'Eco-responsible',
       description: language === 'fr' 
-        ? 'Nos emballages sont recyclables et nous privilégions les produits respectueux de l\'environnement. Ensemble, agissons pour la planète.' 
-        : 'Our packaging is recyclable and we favor environmentally friendly products. Together, let\'s act for the planet.',
+        ? 'Notre infrastructure cloud est optimisée pour minimiser l\'empreinte carbone. Stockage de données écologique et code optimisé pour réduire la consommation d\'énergie.' 
+        : 'Our cloud infrastructure is optimized to minimize carbon footprint. Ecological data storage and optimized code to reduce energy consumption.',
     },
     {
       icon: (
@@ -36,10 +36,10 @@ export default function QualitePage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
-      title: language === 'fr' ? '100% Local' : '100% Belgian',
+      title: language === 'fr' ? 'Sécurité des données' : 'Data security',
       description: language === 'fr' 
-        ? 'Fiers de nos racines, nous travaillons exclusivement avec des partenaires belges pour soutenir notre économie locale.' 
-        : 'Proud of our roots, we work exclusively with Belgian partners to support our local economy.',
+        ? 'Vos données sont cryptées et sécurisées selon les normes RGPD. Nous garantissons la confidentialité totale de vos cours et informations personnelles.' 
+        : 'Your data is encrypted and secured according to GDPR standards. We guarantee complete confidentiality of your courses and personal information.',
     },
     {
       icon: (
@@ -49,8 +49,8 @@ export default function QualitePage() {
       ),
       title: language === 'fr' ? 'Transparence totale' : 'Total transparency',
       description: language === 'fr' 
-        ? 'Nous communiquons ouvertement sur nos produits, nos partenaires et nos pratiques. Pas de surprises, que de la confiance.' 
-        : 'We communicate openly about our products, partners and practices. No surprises, just trust.',
+        ? 'Nous communiquons ouvertement sur nos fonctionnalités, nos mises à jour et nos pratiques. Pas de surprises, que de la confiance.' 
+        : 'We communicate openly about our features, updates and practices. No surprises, just trust.',
     },
   ]
 
@@ -58,15 +58,15 @@ export default function QualitePage() {
     {
       title: language === 'fr' ? 'Innovation' : 'Innovation',
       description: language === 'fr' 
-        ? 'Nous cherchons constamment à améliorer nos produits et services pour mieux répondre aux besoins des étudiants.' 
-        : 'We constantly seek to improve our products and services to better meet student needs.',
+        ? 'Nous intégrons les dernières technologies IA pour améliorer constamment l\'expérience d\'apprentissage de nos utilisateurs.' 
+        : 'We integrate the latest AI technologies to constantly improve the learning experience of our users.',
       color: 'bg-blue-500',
     },
     {
       title: language === 'fr' ? 'Accessibilité' : 'Accessibility',
       description: language === 'fr' 
-        ? 'Des prix justes pour que chaque étudiant puisse bénéficier de nos solutions, quel que soit son budget.' 
-        : 'Fair prices so every student can benefit from our solutions, regardless of their budget.',
+        ? 'Un prix unique de 10€ pour un accès à vie, accessible à tous les étudiants sans abonnement récurrent.' 
+        : 'A one-time price of €10 for lifetime access, accessible to all students without recurring subscription.',
       color: 'bg-green-500',
     },
     {
@@ -88,31 +88,31 @@ export default function QualitePage() {
   const process = [
     {
       step: 1,
-      title: language === 'fr' ? 'Sélection rigoureuse' : 'Rigorous selection',
+      title: language === 'fr' ? 'Développement agile' : 'Agile development',
       description: language === 'fr' 
-        ? 'Nous analysons des dizaines de produits pour n\'en retenir que les meilleurs.' 
-        : 'We analyze dozens of products to keep only the best.',
+        ? 'Nous développons chaque fonctionnalité en suivant les meilleures pratiques de développement logiciel.' 
+        : 'We develop each feature following software development best practices.',
     },
     {
       step: 2,
-      title: language === 'fr' ? 'Tests qualité' : 'Quality tests',
+      title: language === 'fr' ? 'Tests utilisateurs' : 'User testing',
       description: language === 'fr' 
-        ? 'Chaque produit est testé par notre équipe et des étudiants bêta-testeurs.' 
-        : 'Each product is tested by our team and student beta testers.',
+        ? 'Chaque fonctionnalité est testée par notre équipe et des étudiants bêta-testeurs avant déploiement.' 
+        : 'Each feature is tested by our team and student beta testers before deployment.',
     },
     {
       step: 3,
-      title: language === 'fr' ? 'Validation partenaires' : 'Partner validation',
+      title: language === 'fr' ? 'Optimisation IA' : 'AI optimization',
       description: language === 'fr' 
-        ? 'Nous vérifions les engagements qualité et éthiques de nos partenaires.' 
-        : 'We verify the quality and ethical commitments of our partners.',
+        ? 'Nos algorithmes d\'IA sont continuellement optimisés pour améliorer la pertinence des synthèses et quiz.' 
+        : 'Our AI algorithms are continuously optimized to improve the relevance of summaries and quizzes.',
     },
     {
       step: 4,
-      title: language === 'fr' ? 'Contrôle final' : 'Final control',
+      title: language === 'fr' ? 'Déploiement continu' : 'Continuous deployment',
       description: language === 'fr' 
-        ? 'Chaque box est vérifiée avant expédition pour garantir votre satisfaction.' 
-        : 'Each box is checked before shipping to guarantee your satisfaction.',
+        ? 'Mises à jour régulières et automatiques pour vous offrir toujours la meilleure version de StudyBox.' 
+        : 'Regular and automatic updates to always offer you the best version of StudyBox.',
     },
   ]
 
@@ -202,8 +202,8 @@ export default function QualitePage() {
             </h2>
             <p className="text-xl text-gray-600 text-center mb-16 max-w-2xl mx-auto font-light">
               {language === 'fr' 
-                ? 'Comment nous garantissons la qualité de chaque StudyBox' 
-                : 'How we guarantee the quality of each StudyBox'}
+                ? 'Comment nous garantissons la qualité de l\'application StudyBox' 
+                : 'How we guarantee the quality of the StudyBox application'}
             </p>
           </AnimatedSection>
 
@@ -239,7 +239,7 @@ export default function QualitePage() {
               href="/commander" 
               className="inline-flex items-center gap-3 bg-white text-studybox-blue px-10 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-xl"
             >
-              {language === 'fr' ? 'Commander maintenant' : 'Order now'}
+              {language === 'fr' ? 'Obtenir StudyBox' : 'Get StudyBox'}
             </a>
           </AnimatedSection>
         </div>

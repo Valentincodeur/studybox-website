@@ -11,98 +11,26 @@ export default function FAQPage() {
 
   const categories = [
     {
-      title: language === 'fr' ? 'La StudyBox' : 'The StudyBox',
-      icon: '📦',
-      questions: [
-        {
-          q: language === 'fr' ? 'Qu\'est-ce que la StudyBox ?' : 'What is the StudyBox?',
-          a: language === 'fr' 
-            ? 'La StudyBox est un kit complet pour étudiants contenant tout le nécessaire pour réussir vos études : fournitures, snacks énergétiques, et accès à notre application de gestion des études.' 
-            : 'The StudyBox is a complete kit for students containing everything you need to succeed in your studies: supplies, energy snacks, and access to our study management app.',
-        },
-        {
-          q: language === 'fr' ? 'Que contient la StudyBox ?' : 'What does the StudyBox contain?',
-          a: language === 'fr' 
-            ? 'Chaque StudyBox contient des fournitures scolaires de qualité, des snacks et boissons énergétiques, des goodies exclusifs, et un code d\'accès premium à notre application.' 
-            : 'Each StudyBox contains quality school supplies, energy snacks and drinks, exclusive goodies, and a premium access code to our app.',
-        },
-        {
-          q: language === 'fr' ? 'À qui s\'adresse la StudyBox ?' : 'Who is the StudyBox for?',
-          a: language === 'fr' 
-            ? 'La StudyBox est conçue pour tous les étudiants : primaire, secondaire, étudiants en prépa ou en école supérieure. Elle s\'adapte à tous les besoins.' 
-            : 'The StudyBox is designed for all students: high school, university, prep school or higher education students. It adapts to all needs.',
-        },
-        {
-          q: language === 'fr' ? 'Puis-je personnaliser ma StudyBox ?' : 'Can I customize my StudyBox?',
-          a: language === 'fr' 
-            ? 'Oui ! Lors de votre commande, vous pouvez choisir certaines options pour personnaliser le contenu selon vos préférences et besoins spécifiques.' 
-            : 'Yes! When ordering, you can choose certain options to customize the content according to your specific preferences and needs.',
-        },
-      ],
-    },
-    {
-      title: language === 'fr' ? 'Commande & Paiement' : 'Order & Payment',
-      icon: '💳',
-      questions: [
-        {
-          q: language === 'fr' ? 'Comment passer commande ?' : 'How do I place an order?',
-          a: language === 'fr' 
-            ? 'Rendez-vous sur notre page Commander, sélectionnez votre StudyBox, remplissez vos informations de livraison et procédez au paiement sécurisé.' 
-            : 'Go to our Order page, select your StudyBox, fill in your delivery information and proceed to secure payment.',
-        },
-        {
-          q: language === 'fr' ? 'Quels moyens de paiement acceptez-vous ?' : 'What payment methods do you accept?',
-          a: language === 'fr' 
-            ? 'Nous acceptons les cartes bancaires (Visa, Mastercard, Bancontact), PayPal, Apple Pay, Google Pay, et tous les paiements sécurisés via Stripe. Stripe garantit la sécurité de vos transactions.' 
-            : 'We accept credit cards (Visa, Mastercard, Bancontact), PayPal, Apple Pay, Google Pay, and all secure payments via Stripe. Stripe guarantees the security of your transactions.',
-        },
-        {
-          q: language === 'fr' ? 'Le paiement est-il sécurisé ?' : 'Is the payment secure?',
-          a: language === 'fr' 
-            ? 'Absolument ! Tous nos paiements sont sécurisés par cryptage SSL via Stripe, et nous ne stockons jamais vos données bancaires.' 
-            : 'Absolutely! All our payments are secured by SSL encryption via Stripe, and we never store your banking data.',
-        },
-        {
-          q: language === 'fr' ? 'Puis-je annuler ma commande ?' : 'Can I cancel my order?',
-          a: language === 'fr' 
-            ? 'Vous pouvez annuler votre commande dans les 24h suivant la confirmation, tant qu\'elle n\'a pas été expédiée. Contactez notre support.' 
-            : 'You can cancel your order within 24 hours of confirmation, as long as it has not been shipped. Contact our support.',
-        },
-      ],
-    },
-    {
-      title: language === 'fr' ? 'Livraison' : 'Delivery',
-      icon: '🚚',
-      questions: [
-        {
-          q: language === 'fr' ? 'Quels sont les délais de livraison ?' : 'What are the delivery times?',
-          a: language === 'fr' 
-            ? 'La livraison standard prend 3-5 jours ouvrables. La livraison express est disponible en 1-2 jours ouvrables moyennant un supplément.' 
-            : 'Standard delivery takes 3-5 business days. Express delivery is available in 1-2 business days for an additional fee.',
-        },
-        {
-          q: language === 'fr' ? 'Livrez-vous en dehors de la Belgique ?' : 'Do you deliver outside Belgium?',
-          a: language === 'fr' 
-            ? 'Oui, nous livrons dans toute l\'Europe. Les frais et délais varient selon le pays de destination.' 
-            : 'Yes, we deliver throughout Europe. Fees and times vary depending on the destination country.',
-        },
-        {
-          q: language === 'fr' ? 'Comment suivre ma commande ?' : 'How do I track my order?',
-          a: language === 'fr' 
-            ? 'Dès l\'expédition, vous recevrez un email avec un numéro de suivi pour suivre votre colis en temps réel.' 
-            : 'Upon shipment, you will receive an email with a tracking number to track your package in real time.',
-        },
-      ],
-    },
-    {
-      title: language === 'fr' ? 'L\'Application' : 'The App',
+      title: language === 'fr' ? 'L\'Application StudyBox' : 'The StudyBox App',
       icon: '📱',
       questions: [
         {
-          q: language === 'fr' ? 'L\'application est-elle gratuite ?' : 'Is the app free?',
+          q: language === 'fr' ? 'Qu\'est-ce que StudyBox ?' : 'What is StudyBox?',
           a: language === 'fr' 
-            ? 'L\'application est accessible uniquement après l\'achat d\'une StudyBox, ce qui vous donne accès à toutes les fonctionnalités.' 
-            : 'The application is only accessible after purchasing a StudyBox, which gives you access to all features.',
+            ? 'StudyBox est une application mobile complète pour étudiants qui vous aide à organiser vos cours, créer des fiches de révision, générer des quiz avec l\'IA, et gérer votre planning d\'études de manière efficace.' 
+            : 'StudyBox is a comprehensive mobile app for students that helps you organize your courses, create revision cards, generate AI-powered quizzes, and manage your study schedule efficiently.',
+        },
+        {
+          q: language === 'fr' ? 'Quelles sont les fonctionnalités principales ?' : 'What are the main features?',
+          a: language === 'fr' 
+            ? 'StudyBox propose : organisation des cours, planning et rappels, prise de notes, fiches de révision intelligentes, quiz générés par IA, synthèses automatiques, import de documents, et bien plus encore.' 
+            : 'StudyBox offers: course organization, planning and reminders, note-taking, smart revision cards, AI-generated quizzes, automatic summaries, document import, and much more.',
+        },
+        {
+          q: language === 'fr' ? 'À qui s\'adresse StudyBox ?' : 'Who is StudyBox for?',
+          a: language === 'fr' 
+            ? 'StudyBox est conçue pour tous les étudiants : primaire, secondaire, université, grandes écoles. L\'application s\'adapte à tous les niveaux et toutes les matières.' 
+            : 'StudyBox is designed for all students: elementary, high school, university, graduate schools. The app adapts to all levels and all subjects.',
         },
         {
           q: language === 'fr' ? 'Sur quels appareils fonctionne l\'app ?' : 'On which devices does the app work?',
@@ -110,41 +38,113 @@ export default function FAQPage() {
             ? 'L\'application est disponible sur iOS (iPhone/iPad), Android, et en version web accessible depuis n\'importe quel navigateur.' 
             : 'The app is available on iOS (iPhone/iPad), Android, and as a web version accessible from any browser.',
         },
+      ],
+    },
+    {
+      title: language === 'fr' ? 'Achat & Paiement' : 'Purchase & Payment',
+      icon: '💳',
+      questions: [
         {
-          q: language === 'fr' ? 'Mes données sont-elles synchronisées ?' : 'Is my data synchronized?',
+          q: language === 'fr' ? 'Combien coûte StudyBox ?' : 'How much does StudyBox cost?',
           a: language === 'fr' 
-            ? 'Oui, toutes vos données sont synchronisées automatiquement sur tous vos appareils connectés à votre compte.' 
-            : 'Yes, all your data is automatically synchronized across all your devices connected to your account.',
+            ? 'StudyBox est disponible pour un paiement unique de 10€, vous donnant un accès à vie à toutes les fonctionnalités de l\'application. Aucun abonnement mensuel.' 
+            : 'StudyBox is available for a one-time payment of €10, giving you lifetime access to all app features. No monthly subscription.',
         },
         {
-          q: language === 'fr' ? 'Comment récupérer mon code premium ?' : 'How do I get my premium code?',
+          q: language === 'fr' ? 'Comment acheter l\'accès à StudyBox ?' : 'How do I purchase access to StudyBox?',
           a: language === 'fr' 
-            ? 'Votre code premium se trouve dans votre StudyBox. Entrez-le dans l\'application pour activer les fonctionnalités premium.' 
-            : 'Your premium code is in your StudyBox. Enter it in the app to activate premium features.',
+            ? 'Rendez-vous sur notre page Commander, remplissez vos informations (nom et email) et procédez au paiement sécurisé. Vous recevrez immédiatement vos identifiants par email.' 
+            : 'Go to our Order page, fill in your information (name and email) and proceed to secure payment. You will immediately receive your credentials by email.',
+        },
+        {
+          q: language === 'fr' ? 'Quels moyens de paiement acceptez-vous ?' : 'What payment methods do you accept?',
+          a: language === 'fr' 
+            ? 'Nous acceptons les cartes bancaires (Visa, Mastercard, Bancontact), et tous les paiements sécurisés via Stripe. Stripe garantit la sécurité de vos transactions.' 
+            : 'We accept credit cards (Visa, Mastercard, Bancontact), and all secure payments via Stripe. Stripe guarantees the security of your transactions.',
+        },
+        {
+          q: language === 'fr' ? 'Le paiement est-il sécurisé ?' : 'Is the payment secure?',
+          a: language === 'fr' 
+            ? 'Absolument ! Tous nos paiements sont sécurisés par cryptage SSL via Stripe, et nous ne stockons jamais vos données bancaires.' 
+            : 'Absolutely! All our payments are secured by SSL encryption via Stripe, and we never store your banking data.',
         },
       ],
     },
     {
-      title: language === 'fr' ? 'Retours & Remboursements' : 'Returns & Refunds',
-      icon: '↩️',
+      title: language === 'fr' ? 'Accès & Compte' : 'Access & Account',
+      icon: '🔐',
       questions: [
         {
-          q: language === 'fr' ? 'Quelle est votre politique de retour ?' : 'What is your return policy?',
+          q: language === 'fr' ? 'Comment accéder à l\'application après l\'achat ?' : 'How do I access the app after purchase?',
           a: language === 'fr' 
-            ? 'Vous disposez de 14 jours après réception pour retourner votre StudyBox non ouverte. Les frais de retour sont à votre charge.' 
-            : 'You have 14 days after receipt to return your unopened StudyBox. Return costs are at your expense.',
+            ? 'Après votre paiement, vous recevrez immédiatement un email avec vos identifiants de connexion. Téléchargez l\'app ou connectez-vous sur la version web pour commencer.' 
+            : 'After your payment, you will immediately receive an email with your login credentials. Download the app or log in to the web version to get started.',
         },
         {
-          q: language === 'fr' ? 'Comment effectuer un retour ?' : 'How do I make a return?',
+          q: language === 'fr' ? 'Mes données sont-elles synchronisées ?' : 'Is my data synchronized?',
           a: language === 'fr' 
-            ? 'Contactez notre support pour obtenir une autorisation de retour et l\'adresse d\'envoi. Emballez soigneusement le produit.' 
-            : 'Contact our support to get a return authorization and shipping address. Pack the product carefully.',
+            ? 'Oui, toutes vos données sont synchronisées automatiquement sur tous vos appareils connectés à votre compte StudyBox.' 
+            : 'Yes, all your data is automatically synchronized across all your devices connected to your StudyBox account.',
+        },
+        {
+          q: language === 'fr' ? 'Puis-je utiliser StudyBox sur plusieurs appareils ?' : 'Can I use StudyBox on multiple devices?',
+          a: language === 'fr' 
+            ? 'Oui ! Votre compte StudyBox fonctionne sur tous vos appareils : smartphone, tablette, ordinateur. Vos données restent synchronisées partout.' 
+            : 'Yes! Your StudyBox account works on all your devices: smartphone, tablet, computer. Your data stays synchronized everywhere.',
+        },
+        {
+          q: language === 'fr' ? 'Que faire si je perds mes identifiants ?' : 'What if I lose my credentials?',
+          a: language === 'fr' 
+            ? 'Utilisez la fonction "Mot de passe oublié" sur la page de connexion, ou contactez notre support avec l\'email utilisé lors de l\'achat.' 
+            : 'Use the "Forgot password" function on the login page, or contact our support with the email used during purchase.',
+        },
+      ],
+    },
+    {
+      title: language === 'fr' ? 'Fonctionnalités' : 'Features',
+      icon: '✨',
+      questions: [
+        {
+          q: language === 'fr' ? 'Comment fonctionne l\'IA de StudyBox ?' : 'How does StudyBox AI work?',
+          a: language === 'fr' 
+            ? 'Notre IA analyse vos cours et documents pour générer automatiquement des synthèses, des fiches de révision et des quiz adaptés à votre niveau et vos besoins.' 
+            : 'Our AI analyzes your courses and documents to automatically generate summaries, revision cards and quizzes adapted to your level and needs.',
+        },
+        {
+          q: language === 'fr' ? 'Puis-je importer mes cours existants ?' : 'Can I import my existing courses?',
+          a: language === 'fr' 
+            ? 'Oui ! StudyBox permet d\'importer vos documents PDF, Word, PowerPoint et images. L\'IA les analyse pour créer du contenu d\'étude optimisé.' 
+            : 'Yes! StudyBox allows you to import your PDF, Word, PowerPoint and image documents. The AI analyzes them to create optimized study content.',
+        },
+        {
+          q: language === 'fr' ? 'L\'application fonctionne-t-elle hors ligne ?' : 'Does the app work offline?',
+          a: language === 'fr' 
+            ? 'Oui, vous pouvez consulter vos cours, fiches et notes hors ligne. Les fonctionnalités IA nécessitent une connexion internet.' 
+            : 'Yes, you can view your courses, cards and notes offline. AI features require an internet connection.',
+        },
+      ],
+    },
+    {
+      title: language === 'fr' ? 'Garantie & Remboursement' : 'Guarantee & Refund',
+      icon: '✅',
+      questions: [
+        {
+          q: language === 'fr' ? 'Proposez-vous une garantie satisfait ou remboursé ?' : 'Do you offer a money-back guarantee?',
+          a: language === 'fr' 
+            ? 'Oui ! Vous disposez de 14 jours après l\'achat pour tester StudyBox. Si vous n\'êtes pas satisfait, contactez notre support pour un remboursement complet.' 
+            : 'Yes! You have 14 days after purchase to test StudyBox. If you are not satisfied, contact our support for a full refund.',
+        },
+        {
+          q: language === 'fr' ? 'Comment demander un remboursement ?' : 'How do I request a refund?',
+          a: language === 'fr' 
+            ? 'Contactez notre support à studybox.lje@gmail.com dans les 14 jours suivant votre achat en indiquant votre email de commande.' 
+            : 'Contact our support at studybox.lje@gmail.com within 14 days of your purchase with your order email.',
         },
         {
           q: language === 'fr' ? 'Quand serai-je remboursé ?' : 'When will I be refunded?',
           a: language === 'fr' 
-            ? 'Le remboursement est effectué sous 5-10 jours ouvrables après réception et vérification du retour.' 
-            : 'The refund is made within 5-10 business days after receipt and verification of the return.',
+            ? 'Le remboursement est effectué sous 5-7 jours ouvrables après validation de votre demande par notre équipe.' 
+            : 'The refund is made within 5-7 business days after validation of your request by our team.',
         },
       ],
     },

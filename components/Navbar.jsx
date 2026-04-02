@@ -82,7 +82,7 @@ export default function Navbar() {
                 <div className="fixed left-0 right-0 top-16 z-40 animate-[slideDown_0.3s_ease-out]" onMouseEnter={() => setStudyboxOpen(true)} onMouseLeave={() => setStudyboxOpen(false)}>
                   <div className="w-full bg-white/80 backdrop-blur-xl shadow-2xl" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
                     <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
-                      <div className="grid grid-cols-2 gap-16">
+                      <div className="grid grid-cols-4 gap-12">
                         <div className="animate-[fadeInUp_0.4s_ease-out]">
                           <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.discover')}</h3>
                           <ul className="space-y-4">
@@ -91,12 +91,27 @@ export default function Navbar() {
                             <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/studybox#prix" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.pricing')}</Link></li>
                           </ul>
                         </div>
+                        <div className="animate-[fadeInUp_0.45s_ease-out]">
+                          <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.features')}</h3>
+                          <ul className="space-y-4">
+                            <li className="animate-[fadeInUp_0.5s_ease-out]"><Link href="/application/organisation" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.courseOrganization')}</Link></li>
+                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/application/planning" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.planningReminders')}</Link></li>
+                            <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/application/notes" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.noteTaking')}</Link></li>
+                          </ul>
+                        </div>
                         <div className="animate-[fadeInUp_0.5s_ease-out]">
                           <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.whyStudybox')}</h3>
                           <ul className="space-y-4">
                             <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/avantages" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.ourAdvantages')}</Link></li>
                             <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/qualite" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.qualityCommitment')}</Link></li>
                             <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/temoignages" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.studentTestimonials')}</Link></li>
+                          </ul>
+                        </div>
+                        <div className="animate-[fadeInUp_0.55s_ease-out]">
+                          <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.helpTutorials')}</h3>
+                          <ul className="space-y-4">
+                            <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/application/signaler-probleme" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.reportProblem')}</Link></li>
+                            <li className="animate-[fadeInUp_0.7s_ease-out]"><Link href="/application/suggerer-fonctionnalite" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.suggestFeature')}</Link></li>
                           </ul>
                         </div>
                       </div>
@@ -126,70 +141,20 @@ export default function Navbar() {
                             <li className="animate-[fadeInUp_0.5s_ease-out]"><Link href="/actualites" className="text-2xl font-semibold hover:opacity-70 transition-opacity block text-black">{t('nav.allNews')}</Link></li>
                             <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/actualites#conseils-etudes" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.studyTips')}</Link></li>
                             <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/actualites#organisation" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.organizationProductivity')}</Link></li>
-                            <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/actualites#vie-etudiante" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.studentLife')}</Link></li>
                           </ul>
                         </div>
                         <div className="animate-[fadeInUp_0.45s_ease-out]">
                           <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.events')}</h3>
                           <ul className="space-y-4">
                             <li className="animate-[fadeInUp_0.5s_ease-out]"><Link href="/actualites#evenements" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.eventsAgenda')}</Link></li>
-                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/actualites#marches" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.marketsFairs')}</Link></li>
                           </ul>
                         </div>
                         <div className="animate-[fadeInUp_0.5s_ease-out]">
                           <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.whatsNew')}</h3>
                           <ul className="space-y-4">
-                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/actualites#nouveaux-produits" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.newProducts')}</Link></li>
                             <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/actualites#mises-a-jour-app" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.appUpdates')}</Link></li>
                             <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/actualites#partenariats" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.newPartners')}</Link></li>
                             <li className="animate-[fadeInUp_0.7s_ease-out]"><Link href="/actualites#newsletter" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{language === 'fr' ? "S'inscrire à la newsletter" : "Subscribe to newsletter"}</Link></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Application Mega Menu */}
-            <div className="relative">
-              <Link 
-                href="/application" 
-                className="text-sm font-medium hover:opacity-70 transition-all duration-300 text-white"
-                onMouseEnter={() => { closeAllMenus(); setAppOpen(true); }}
-              >
-                {t('nav.application')}
-              </Link>
-              {appOpen && (
-                <div className="fixed left-0 right-0 top-16 z-40 animate-[slideDown_0.3s_ease-out]" onMouseEnter={() => setAppOpen(true)} onMouseLeave={() => setAppOpen(false)}>
-                  <div className="w-full bg-white/80 backdrop-blur-xl shadow-2xl" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
-                    <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
-                      <div className="grid grid-cols-3 gap-16">
-                        <div className="animate-[fadeInUp_0.4s_ease-out]">
-                          <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.download')}</h3>
-                          <ul className="space-y-4">
-                            <li className="animate-[fadeInUp_0.5s_ease-out]"><Link href="/application" className="text-2xl font-semibold hover:opacity-70 transition-opacity block text-black">{t('nav.theApp')}</Link></li>
-                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/application/ios" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.downloadIOS')}</Link></li>
-                            <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/application/android" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.downloadAndroid')}</Link></li>
-                            <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/application/web" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.webVersion')}</Link></li>
-                          </ul>
-                        </div>
-                        <div className="animate-[fadeInUp_0.45s_ease-out]">
-                          <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.features')}</h3>
-                          <ul className="space-y-4">
-                            <li className="animate-[fadeInUp_0.5s_ease-out]"><Link href="/application/organisation" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.courseOrganization')}</Link></li>
-                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/application/planning" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.planningReminders')}</Link></li>
-                            <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/application/notes" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.noteTaking')}</Link></li>
-                          </ul>
-                        </div>
-                        <div className="animate-[fadeInUp_0.5s_ease-out]">
-                          <h3 className="text-xs font-semibold uppercase tracking-wider mb-6 text-gray-500">{t('nav.helpTutorials')}</h3>
-                          <ul className="space-y-4">
-                            <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/application/guide" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.gettingStarted')}</Link></li>
-                            <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/temoignages" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.studentTestimonials')}</Link></li>
-                            <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/application/signaler-probleme" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.reportProblem')}</Link></li>
-                            <li className="animate-[fadeInUp_0.7s_ease-out]"><Link href="/application/suggerer-fonctionnalite" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.suggestFeature')}</Link></li>
                           </ul>
                         </div>
                       </div>
@@ -220,6 +185,7 @@ export default function Navbar() {
                             <li className="animate-[fadeInUp_0.55s_ease-out]"><Link href="/a-propos#histoire" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.ourHistory')}</Link></li>
                             <li className="animate-[fadeInUp_0.6s_ease-out]"><Link href="/a-propos#equipe" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.theTeam')}</Link></li>
                             <li className="animate-[fadeInUp_0.65s_ease-out]"><Link href="/a-propos#vision" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{t('nav.ourVision')}</Link></li>
+                            <li className="animate-[fadeInUp_0.7s_ease-out]"><Link href="/lje" className="text-lg hover:opacity-70 transition-opacity block text-gray-700">{language === 'fr' ? 'En savoir plus sur LJE' : 'Learn more about LJE'}</Link></li>
                           </ul>
                         </div>
                         <div className="animate-[fadeInUp_0.45s_ease-out]">
@@ -444,13 +410,30 @@ export default function Navbar() {
                         <Link href="/studybox#prix" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.pricing')}</Link>
                       </div>
                     </div>
-                                        {/* Section Pourquoi StudyBox */}
+                    {/* Section Fonctionnalités */}
+                    <div className="pl-4">
+                      <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.features')}</h4>
+                      <div className="space-y-2">
+                        <Link href="/application/organisation" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.courseOrganization')}</Link>
+                        <Link href="/application/planning" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.planningReminders')}</Link>
+                        <Link href="/application/notes" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.noteTaking')}</Link>
+                      </div>
+                    </div>
+                    {/* Section Pourquoi StudyBox */}
                     <div className="pl-4">
                       <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.whyStudybox')}</h4>
                       <div className="space-y-2">
                         <Link href="/avantages" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.ourAdvantages')}</Link>
                         <Link href="/qualite" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.qualityCommitment')}</Link>
                         <Link href="/temoignages" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.studentTestimonials')}</Link>
+                      </div>
+                    </div>
+                    {/* Section Aide */}
+                    <div className="pl-4">
+                      <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.helpTutorials')}</h4>
+                      <div className="space-y-2">
+                        <Link href="/application/signaler-probleme" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.reportProblem')}</Link>
+                        <Link href="/application/suggerer-fonctionnalite" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.suggestFeature')}</Link>
                       </div>
                     </div>
                   </div>
@@ -482,7 +465,6 @@ export default function Navbar() {
                         <Link href="/actualites" className="block py-2 text-xl font-medium text-black hover:text-gray-600" onClick={() => setMobileMenuOpen(false)}>{t('nav.allNews')}</Link>
                         <Link href="/actualites#conseils-etudes" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.studyTips')}</Link>
                         <Link href="/actualites#organisation" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.organizationProductivity')}</Link>
-                        <Link href="/actualites#vie-etudiante" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.studentLife')}</Link>
                       </div>
                     </div>
                     {/* Section Événements */}
@@ -490,65 +472,15 @@ export default function Navbar() {
                       <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.events')}</h4>
                       <div className="space-y-2">
                         <Link href="/actualites#evenements" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.eventsAgenda')}</Link>
-                        <Link href="/actualites#marches" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.marketsFairs')}</Link>
                       </div>
                     </div>
                     {/* Section Nouveautés */}
                     <div className="pl-4">
                       <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.whatsNew')}</h4>
                       <div className="space-y-2">
-                        <Link href="/actualites#nouveaux-produits" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.newProducts')}</Link>
                         <Link href="/actualites#mises-a-jour-app" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.appUpdates')}</Link>
                         <Link href="/actualites#partenariats" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.newPartners')}</Link>
                         <Link href="/actualites#newsletter" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{language === 'fr' ? "S'inscrire à la newsletter" : "Subscribe to newsletter"}</Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              {/* Application avec sous-menu organisé */}
-              <div className="border-t border-gray-300">
-                <button
-                  onClick={() => setMobileAppOpen(!mobileAppOpen)}
-                  className="w-full flex items-center justify-between py-4 text-3xl font-semibold text-black hover:text-gray-600 transition-colors"
-                >
-                  <span>{t('nav.application')}</span>
-                  <svg 
-                    className={`w-6 h-6 transition-transform duration-300 ${mobileAppOpen ? 'rotate-180' : ''}`} 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {mobileAppOpen && (
-                  <div className="pb-4 space-y-6 animate-[slideDown_0.3s_ease-out]">
-                    {/* Section Télécharger */}
-                    <div className="pl-4">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.download')}</h4>
-                      <div className="space-y-2">
-                        <Link href="/application" className="block py-2 text-xl font-medium text-black hover:text-gray-600" onClick={() => setMobileMenuOpen(false)}>{t('nav.theApp')}</Link>
-                        <Link href="/application/ios" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.downloadIOS')}</Link>
-                        <Link href="/application/android" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.downloadAndroid')}</Link>
-                        <Link href="/application/web" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.webVersion')}</Link>
-                      </div>
-                    </div>
-                    {/* Section Fonctionnalités */}
-                    <div className="pl-4">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.features')}</h4>
-                      <div className="space-y-2">
-                        <Link href="/application/organisation" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.courseOrganization')}</Link>
-                        <Link href="/application/planning" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.planningReminders')}</Link>
-                        <Link href="/application/notes" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.noteTaking')}</Link>
-                      </div>
-                    </div>
-                    {/* Section Aide */}
-                    <div className="pl-4">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">{t('nav.helpTutorials')}</h4>
-                      <div className="space-y-2">
-                        <Link href="/application/guide" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.gettingStarted')}</Link>
                       </div>
                     </div>
                   </div>
@@ -581,6 +513,7 @@ export default function Navbar() {
                         <Link href="/a-propos#histoire" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.ourHistory')}</Link>
                         <Link href="/a-propos#equipe" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.theTeam')}</Link>
                         <Link href="/a-propos#vision" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{t('nav.ourVision')}</Link>
+                        <Link href="/lje" className="block py-2 text-lg text-gray-700 hover:text-black" onClick={() => setMobileMenuOpen(false)}>{language === 'fr' ? 'En savoir plus sur LJE' : 'Learn more about LJE'}</Link>
                       </div>
                     </div>
                     {/* Section Nos valeurs */}

@@ -13,44 +13,43 @@ export default function AvantagesPage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: language === 'fr' ? 'Prix accessible' : 'Affordable price',
+      title: language === 'fr' ? 'Prix unique' : 'One-time price',
       description: language === 'fr' 
-        ? 'Seulement 15€ pour une box complète remplie de produits essentiels pour vos études. Un investissement malin pour votre réussite.' 
-        : 'Only €15 for a complete box filled with essential products for your studies. A smart investment for your success.',
+        ? 'Seulement 10€ pour un accès à vie à StudyBox. Plus d\'abonnements, pas de frais cachés. Un investissement intelligent pour votre avenir académique.' 
+        : 'Only €10 for lifetime access to StudyBox. No subscriptions, no hidden fees. A smart investment for your academic future.',
     },
     {
       icon: (
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       ),
-      title: language === 'fr' ? 'Produits sélectionnés' : 'Selected products',
+      title: language === 'fr' ? 'Intelligence Artificielle' : 'Artificial Intelligence',
       description: language === 'fr' 
-        ? 'Chaque produit est soigneusement choisi pour sa qualité et son utilité. Nous testons tout avant de l\'inclure dans nos box.' 
-        : 'Each product is carefully chosen for its quality and usefulness. We test everything before including it in our boxes.',
+        ? 'Synthèses automatiques, quiz adaptatifs, et révisions personnalisées grâce à notre IA avancée qui apprend de votre style d\'apprentissage.' 
+        : 'Automatic summaries, adaptive quizzes, and personalized revisions thanks to our advanced AI that learns from your learning style.',
     },
     {
       icon: (
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12l-4.5-4.5M12 16.5l4.5-4.5M12 7.5V16.5" />
         </svg>
       ),
-      title: language === 'fr' ? 'Partenaires locaux' : 'Local partners',
+      title: language === 'fr' ? 'Import automatique' : 'Automatic import',
       description: language === 'fr' 
-        ? 'Nous collaborons avec des entreprises belges pour soutenir l\'économie locale et vous offrir des produits de qualité.' 
-        : 'We collaborate with Belgian companies to support the local economy and offer you quality products.',
+        ? 'Importez vos cours, PDFs et notes en un clic. StudyBox organise automatiquement tout votre contenu de manière structurée.' 
+        : 'Import your courses, PDFs and notes in one click. StudyBox automatically organizes all your content in a structured way.',
     },
     {
       icon: (
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
         </svg>
       ),
-      title: language === 'fr' ? 'Livraison rapide' : 'Fast delivery',
+      title: language === 'fr' ? 'Multilingue' : 'Multilingual',
       description: language === 'fr' 
-        ? 'Recevez votre StudyBox en 3-5 jours ouvrables. Livraison gratuite dès 3 box commandées !' 
-        : 'Receive your StudyBox in 3-5 business days. Free shipping from 3 boxes ordered!',
+        ? 'Disponible en français, anglais, néerlandais, italien, espagnol, polonais et portugais. StudyBox s\'adapte parfaitement aux étudiants internationaux.' 
+        : 'Available in French, English, Dutch, Italian, Spanish, Polish and Portuguese. StudyBox adapts perfectly to international students.',
     },
     {
       icon: (
@@ -60,25 +59,25 @@ export default function AvantagesPage() {
       ),
       title: language === 'fr' ? 'Satisfait ou remboursé' : 'Satisfied or refunded',
       description: language === 'fr' 
-        ? '14 jours pour changer d\'avis. Si vous n\'êtes pas satisfait, nous vous remboursons intégralement.' 
-        : '14 days to change your mind. If you are not satisfied, we will refund you in full.',
+        ? '14 jours pour changer d\'avis. Si vous n\'êtes pas satisfait de StudyBox, nous vous remboursons intégralement.' 
+        : '14 days to change your mind. If you are not satisfied with StudyBox, we will refund you in full.',
     },
     {
       icon: (
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: language === 'fr' ? 'Support réactif' : 'Responsive support',
+      title: language === 'fr' ? 'Accès instantané' : 'Instant access',
       description: language === 'fr' 
-        ? 'Une question ? Notre équipe vous répond sous 48h par email ou via nos réseaux sociaux.' 
-        : 'Any question? Our team responds within 48 hours by email or via our social networks.',
+        ? 'Pas de livraison, pas d\'attente. Accédez à StudyBox immédiatement après paiement sur tous vos appareils.' 
+        : 'No delivery, no waiting. Access StudyBox immediately after payment on all your devices.',
     },
   ]
 
   const stats = [
     { value: '95%', label: language === 'fr' ? 'Clients satisfaits' : 'Satisfied customers' },
-    { value: '100+', label: language === 'fr' ? 'Étudiants satisfaits' : 'Satisfied students' },
+    { value: '1,5k+', label: language === 'fr' ? 'Étudiants satisfaits' : 'Satisfied students' },
     { value: '48h', label: language === 'fr' ? 'Temps de réponse' : 'Response time' },
   ]
 
@@ -97,8 +96,8 @@ export default function AvantagesPage() {
             </h1>
             <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto font-light">
               {language === 'fr' 
-                ? 'Découvrez pourquoi des milliers d\'étudiants nous font confiance' 
-                : 'Discover why thousands of students trust us'}
+                ? 'Découvrez pourquoi des milliers d\'étudiants ont adopté StudyBox' 
+                : 'Discover why thousands of students have adopted StudyBox'}
             </p>
           </AnimatedSection>
         </div>
@@ -129,8 +128,8 @@ export default function AvantagesPage() {
             </h2>
             <p className="text-xl text-gray-600 text-center mb-16 max-w-2xl mx-auto font-light">
               {language === 'fr' 
-                ? 'Tout ce dont vous avez besoin pour réussir vos études' 
-                : 'Everything you need to succeed in your studies'}
+                ? 'L\'application digitale qui transforme votre façon d\'étudier' 
+                : 'The digital app that transforms the way you study'}
             </p>
           </AnimatedSection>
 
@@ -159,8 +158,8 @@ export default function AvantagesPage() {
             </h2>
             <p className="text-xl text-white/80 mb-10 font-light">
               {language === 'fr' 
-                ? 'Rejoignez des milliers d\'étudiants qui ont déjà adopté StudyBox' 
-                : 'Join thousands of students who have already adopted StudyBox'}
+                ? 'Rejoignez la révolution digitale des études' 
+                : 'Join the digital revolution in education'}
             </p>
             <a 
               href="/commander" 
@@ -169,7 +168,7 @@ export default function AvantagesPage() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              {language === 'fr' ? 'Commander ma StudyBox' : 'Order my StudyBox'}
+              {language === 'fr' ? 'Obtenir StudyBox' : 'Get StudyBox'}
             </a>
           </AnimatedSection>
         </div>
