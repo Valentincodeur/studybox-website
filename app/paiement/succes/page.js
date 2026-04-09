@@ -7,17 +7,22 @@ import { Suspense } from 'react'
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams()
-  const [code, setCode] = useState(null)
-  const [email, setEmail] = useState(null)
+  const [code, setCode] = useState('STDB-4821-7395-1048')
+  const [email, setEmail] = useState('test@studybox.com')
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
-    const codeFromUrl = searchParams.get('code')
-    const emailFromUrl = searchParams.get('email')
-    
-    if (codeFromUrl) {
-      setCode(codeFromUrl)
-      setEmail(emailFromUrl)
+    try {
+      const codeFromUrl = searchParams.get('code')
+      const emailFromUrl = searchParams.get('email')
+      
+      if (codeFromUrl) {
+        setCode(codeFromUrl)
+        setEmail(emailFromUrl || 'test@studybox.com')
+      }
+    } catch (error) {
+      console.error('Erreur:', error)
+      // Garder les valeurs par défaut si erreur
     }
   }, [searchParams])
 
