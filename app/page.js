@@ -5,6 +5,125 @@ import Link from 'next/link'
 import { useLanguage } from '../context/LanguageContext'
 import MascotteHero from '../components/MascotteHero'
 
+function FeatureCard({ feature, index }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const cardRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        } else {
+          setIsVisible(false)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current)
+      }
+    }
+  }, [])
+
+  return (
+    <div 
+      ref={cardRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(60px) scale(0.9)',
+        transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${index * 100}ms`
+      }}
+    >
+      <div 
+        className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-3xl blur-xl transition-all duration-700`}
+        style={{
+          opacity: isHovered ? 0.6 : 0.2
+        }}
+      />
+      <div 
+        className="relative backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl p-8 transition-all duration-700"
+        style={{
+          transform: isHovered ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
+          borderColor: isHovered ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.2)'
+        }}
+      >
+        <div 
+          className="text-5xl mb-4 transition-all duration-500"
+          style={{
+            transform: isHovered ? 'scale(1.2) rotate(5deg)' : 'scale(1) rotate(0deg)'
+          }}
+        >
+          {feature.icon}
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-3 transition-colors duration-300">
+          {feature.title}
+        </h3>
+        <p className="text-gray-400 leading-relaxed transition-colors duration-300">
+          {feature.desc}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function TimelineStep({ children, index, side = 'left' }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const stepRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Animation dans les deux sens
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        } else {
+          setIsVisible(false)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (stepRef.current) {
+      observer.observe(stepRef.current)
+    }
+
+    return () => {
+      if (stepRef.current) {
+        observer.unobserve(stepRef.current)
+      }
+    }
+  }, [])
+
+  return (
+    <div 
+      ref={stepRef}
+      className={`relative mb-24 transition-all duration-700 ease-out`}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible 
+          ? 'translateX(0)' 
+          : side === 'left' 
+            ? 'translateX(-8rem)' 
+            : 'translateX(8rem)',
+        transitionDelay: isVisible ? `${index * 150}ms` : '0ms'
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
 export default function Home() {
   const { language } = useLanguage()
   const [scrollY, setScrollY] = useState(0)
@@ -126,7 +245,7 @@ export default function Home() {
               
               {/* Badges autour de la mascotte - Réduit à 3 badges essentiels */}
               {/* Badge IA Active - en haut */}
-              <div className="absolute -top-8 -left-16 backdrop-blur-xl bg-white/15 border-2 border-white/40 rounded-2xl px-5 py-3">
+              <div className="absolute -top-8 -left-16 bg-gray-900 border-2 border-white/40 rounded-2xl px-5 py-3">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                   <span className="text-white text-base font-bold">IA Active</span>
@@ -134,7 +253,7 @@ export default function Home() {
               </div>
               
               {/* Badge +45% - gauche */}
-              <div className="absolute top-1/3 -left-24 backdrop-blur-xl bg-white/15 border-2 border-white/40 rounded-2xl px-5 py-3">
+              <div className="absolute top-1/3 -left-24 bg-gray-900 border-2 border-white/40 rounded-2xl px-5 py-3">
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">⚡</span>
                   <span className="text-white text-base font-bold">+45%</span>
@@ -142,7 +261,7 @@ export default function Home() {
               </div>
               
               {/* Badge 1k+ étudiants - gauche bas */}
-              <div className="absolute bottom-1/3 -left-20 backdrop-blur-xl bg-white/15 border-2 border-white/40 rounded-2xl px-5 py-3">
+              <div className="absolute bottom-1/3 -left-20 bg-gray-900 border-2 border-white/40 rounded-2xl px-5 py-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">🎓</span>
                   <span className="text-white text-base font-bold">1k+ étudiants</span>
@@ -150,7 +269,7 @@ export default function Home() {
               </div>
               
               {/* Badge 96% taux satisfaction - droite bas */}
-              <div className="absolute bottom-1/3 -right-24 backdrop-blur-xl bg-white/15 border-2 border-white/40 rounded-2xl px-5 py-3">
+              <div className="absolute bottom-1/3 -right-24 bg-gray-900 border-2 border-white/40 rounded-2xl px-5 py-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">🎯</span>
                   <span className="text-white text-base font-bold">96% taux satisfaction</span>
@@ -268,7 +387,7 @@ export default function Home() {
             <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500 hidden lg:block"></div>
             
             {/* Étape 1 */}
-            <div className="relative mb-24">
+            <TimelineStep index={0} side="left">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="lg:text-right lg:pr-16">
                   <div className="inline-block backdrop-blur-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-3xl p-8 hover:scale-105 transition-all duration-500">
@@ -304,10 +423,10 @@ export default function Home() {
                 <div className="hidden lg:block"></div>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-cyan-500 rounded-full border-4 border-black hidden lg:block"></div>
-            </div>
+            </TimelineStep>
 
             {/* Étape 2 */}
-            <div className="relative mb-24">
+            <TimelineStep index={1} side="right">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="hidden lg:block"></div>
                 <div className="lg:pl-16">
@@ -343,10 +462,10 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-blue-500 rounded-full border-4 border-black hidden lg:block"></div>
-            </div>
+            </TimelineStep>
 
             {/* Étape 3 */}
-            <div className="relative mb-24">
+            <TimelineStep index={2} side="left">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="lg:text-right lg:pr-16">
                   <div className="inline-block backdrop-blur-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-3xl p-8 hover:scale-105 transition-all duration-500">
@@ -382,10 +501,10 @@ export default function Home() {
                 <div className="hidden lg:block"></div>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-purple-500 rounded-full border-4 border-black hidden lg:block"></div>
-            </div>
+            </TimelineStep>
 
             {/* Étape 4 */}
-            <div className="relative mb-24">
+            <TimelineStep index={3} side="right">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="hidden lg:block"></div>
                 <div className="lg:pl-16">
@@ -421,10 +540,10 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-pink-500 rounded-full border-4 border-black hidden lg:block"></div>
-            </div>
+            </TimelineStep>
 
             {/* Étape 5 */}
-            <div className="relative mb-24">
+            <TimelineStep index={4} side="left">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="lg:text-right lg:pr-16">
                   <div className="inline-block backdrop-blur-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-3xl p-8 hover:scale-105 transition-all duration-500">
@@ -460,10 +579,10 @@ export default function Home() {
                 <div className="hidden lg:block"></div>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-green-500 rounded-full border-4 border-black hidden lg:block"></div>
-            </div>
+            </TimelineStep>
 
             {/* Étape 6 */}
-            <div className="relative">
+            <TimelineStep index={5} side="right">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="hidden lg:block"></div>
                 <div className="lg:pl-16">
@@ -499,7 +618,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-black hidden lg:block"></div>
-            </div>
+            </TimelineStep>
           </div>
         </div>
       </section>
@@ -562,14 +681,7 @@ export default function Home() {
                 color: 'from-yellow-500 to-orange-500'
               }
             ].map((feature, i) => (
-              <div key={i} className="group relative">
-                <div className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`}></div>
-                <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl p-8 hover:scale-105 transition-all duration-500">
-                  <div className="text-5xl mb-4">{feature.icon}</div>
-                  <h3 className="text-2xl font-bold text-white mb-3">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{feature.desc}</p>
-                </div>
-              </div>
+              <FeatureCard key={i} feature={feature} index={i} />
             ))}
           </div>
         </div>

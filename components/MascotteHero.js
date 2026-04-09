@@ -9,10 +9,13 @@ export default function MascotteHero() {
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Mascotte principale avec animation de flottement */}
       <div className="relative z-20 animate-float">
+        {/* Fond opaque derrière le robot */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-950 rounded-full blur-2xl opacity-80 scale-75"></div>
+        
         <img 
           src="/images/mascotte.png" 
           alt="Mascotte StudyBox" 
-          className="w-64 h-64 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-2xl"
+          className="relative z-10 w-64 h-64 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-2xl"
         />
         
         <style jsx>{`
