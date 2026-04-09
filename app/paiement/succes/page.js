@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Suspense } from 'react'
-import Navbar from '@/components/Navbar'
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams()
@@ -32,12 +31,10 @@ function PaymentSuccessContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-      <Navbar />
-      
-      <div className="min-h-screen flex items-center justify-center p-6 pt-24">
+      <div className="min-h-screen flex items-center justify-center p-6 py-12">
         <div className="max-w-4xl w-full">
           {/* Titre principal */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-full mb-6 animate-pulse">
               <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -52,8 +49,8 @@ function PaymentSuccessContent() {
           </div>
 
           {/* Carte code */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 mb-8 border border-white/20 shadow-2xl">
-            <div className="text-center mb-8">
+          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 md:p-10 mb-6 border border-white/20 shadow-2xl">
+            <div className="text-center mb-6">
               <p className="text-blue-200 text-sm font-medium mb-3 uppercase tracking-wider">Votre code d'accès unique</p>
               <div className="bg-white rounded-2xl p-8 mb-6 shadow-xl">
                 <p className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 tracking-wider font-mono">
@@ -106,7 +103,7 @@ function PaymentSuccessContent() {
           </div>
 
           {/* Instructions */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-blue-500 text-white rounded-xl flex items-center justify-center font-black text-lg">
@@ -157,7 +154,7 @@ function PaymentSuccessContent() {
           </div>
 
           {/* Boutons téléchargement */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 mt-12">
             <Link 
               href="/application/ios"
               className="flex-1 bg-white text-gray-900 px-8 py-5 rounded-2xl font-bold text-center hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-3"
@@ -176,16 +173,6 @@ function PaymentSuccessContent() {
                 <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
               </svg>
               Télécharger sur Android
-            </Link>
-          </div>
-
-          {/* Support */}
-          <div className="mt-8 text-center">
-            <Link 
-              href="/contact/support"
-              className="text-blue-200 hover:text-white font-semibold transition-colors"
-            >
-              Besoin d'aide ? Contactez le support →
             </Link>
           </div>
         </div>
