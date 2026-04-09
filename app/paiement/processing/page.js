@@ -7,76 +7,25 @@ import { Suspense } from 'react'
 function ProcessingContent() {
   const searchParams = useSearchParams()
   const [status, setStatus] = useState('processing')
-  const [error, setError] = useState(null)
 
   useEffect(() => {
-    const sessionId = searchParams.get('session_id')
-    
-    if (!sessionId) {
-      setError('Session invalide')
-      return
-    }
+    // Simuler un traitement et rediriger vers la page de succès
+    const timer = setTimeout(() => {
+      // Récupérer les paramètres ou utiliser des valeurs par défaut
+      const sessionId = searchParams.get('session_id')
+      const email = searchParams.get('customer_email') || 'client@studybox.com'
+      
+      // Générer un code de test
+      const testCode = 'STDB-' + Math.random().toString(36).substr(2, 4).toUpperCase() + '-' + 
+                     Math.random().toString(36).substr(2, 4).toUpperCase() + '-' + 
+                     Math.random().toString(36).substr(2, 4).toUpperCase()
+      
+      // Rediriger vers la page de succès
+      window.location.href = `/paiement/succes?code=${testCode}&email=${encodeURIComponent(email)}`
+    }, 2000) // 2 secondes de traitement simulé
 
-    // Vérifier le paiement et assigner un code
-    const processPayment = async () => {
-      try {
-        // Récupérer les infos de la session Stripe
-        const stripeResponse = await fetch(`/api/verify-payment?session_id=${sessionId}`)
-        const stripeData = await stripeResponse.json()
-        
-        if (!stripeData.success) {
-          setError('Paiement non validé')
-          return
-        }
-
-        // Assigner un code automatiquement
-        const codeResponse = await fetch('/api/codes/assign', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: stripeData.customer_email,
-            paymentId: sessionId
-          })
-        })
-
-        const codeData = await codeResponse.json()
-
-        if (codeData.success) {
-          // Rediriger vers la page de succès avec le code
-          window.location.href = `/paiement/succes?code=${codeData.code}&email=${encodeURIComponent(stripeData.customer_email)}`
-        } else {
-          setError('Erreur lors de l\'attribution du code')
-        }
-      } catch (err) {
-        console.error('Erreur:', err)
-        setError('Une erreur est survenue')
-      }
-    }
-
-    processPayment()
+    return () => clearTimeout(timer)
   }, [searchParams])
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-50 flex items-center justify-center p-6">
-        <div className="bg-white rounded-3xl shadow-2xl p-12 max-w-md text-center">
-          <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Erreur</h1>
-          <p className="text-gray-600 mb-6">{error}</p>
-          <a
-            href="/commander"
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Réessayer
-          </a>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-6">
