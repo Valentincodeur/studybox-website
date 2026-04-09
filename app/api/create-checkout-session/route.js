@@ -38,7 +38,7 @@ export async function POST(request) {
       metadata: {
         customer_name: customerName,
       },
-      success_url: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/paiement/processing?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/paiement/succes?code=STDB-${Math.random().toString(36).substr(2, 4).toUpperCase()}-${Math.random().toString(36).substr(2, 4).toUpperCase()}-${Math.random().toString(36).substr(2, 4).toUpperCase()}&email={CUSTOMER_EMAIL}`,
       cancel_url: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/commander`,
     })
 
