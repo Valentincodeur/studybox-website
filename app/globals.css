@@ -745,378 +745,52 @@ body {
   animation: text-shimmer 3s linear infinite;
 }
 
-/* Styles spécifiques pour mobile - Correction des superpositions */
-@media (max-width: 768px) {
-  /* Empêcher le zoom et le défilement horizontal */
+/* ============================================
+   MOBILE STYLES - Apple-like Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+  /* Base mobile setup - Empêcher le zoom */
   html {
     -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
     touch-action: manipulation;
-    scroll-behavior: smooth;
   }
   
   body {
     overflow-x: hidden;
     width: 100%;
-    position: relative;
-    min-height: 100vh;
   }
 
-  /* Correction des espacements pour éviter les superpositions */
   main {
     overflow-x: hidden;
     width: 100%;
-    min-height: 100vh;
   }
 
-  /* Ajustement des sections pour mobile */
-  section {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    margin-bottom: 2rem;
+  /* Cacher les badges flottants qui sortent de l'écran sur mobile */
+  .absolute.-top-8,
+  .absolute.top-1\/3,
+  .absolute.bottom-1\/3 {
+    display: none !important;
   }
 
-  /* Correction des cartes et conteneurs */
-  .max-w-5xl,
-  .max-w-4xl,
-  .max-w-6xl {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  /* Ajustement des titres pour éviter les débordements */
-  h1 {
-    font-size: clamp(2rem, 8vw, 3rem) !important;
-    line-height: 1.2 !important;
-    word-wrap: break-word;
-  }
-
-  h2 {
-    font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
-    line-height: 1.3 !important;
-    word-wrap: break-word;
-  }
-
-  h3 {
-    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
-    line-height: 1.4 !important;
-  }
-
-  /* Correction des grilles pour mobile */
-  .grid {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-    max-width: 100%;
-  }
-
-  /* Grilles spécifiques pour mobile */
-  .grid-cols-1,
-  .grid-cols-2,
-  .grid-cols-3,
-  .grid-cols-4,
-  .grid-cols-6 {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Ajustement des padding pour les cartes */
-  .rounded-2xl,
-  .rounded-3xl {
-    padding: 1rem !important;
-    margin-bottom: 1rem;
-  }
-
-  /* Correction des flex containers */
-  .flex {
-    flex-wrap: wrap;
-  }
-
-  /* Ajustement des images et SVG */
-  img,
-  svg {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Correction des animations pour mobile - moins de mouvement */
-  @media (prefers-reduced-motion: no-preference) {
-    * {
-      animation-duration: 0.2s !important;
-      transition-duration: 0.15s !important;
-    }
-    
-    /* Désactiver les animations complexes sur mobile */
-    .animate-float-slow,
-    .animate-particle,
-    .animate-gradient-shift {
-      animation: none !important;
-    }
-  }
-
-  /* Optimisation GPU */
-  .gpu-accelerated {
-    transform: translateZ(0);
-    will-change: transform;
-  }
-
-  /* Réduire les effets visuels lourds */
-  .backdrop-blur-xl,
-  .backdrop-blur-lg {
-    backdrop-filter: blur(8px) !important;
-  }
-
-  .shadow-2xl {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-  }
-
-  /* Désactiver les effets de hover sur mobile */
-  @media (hover: none) {
-    .group:hover .group-hover\:scale-105,
-    .hover\:scale-105:hover {
-      transform: none !important;
-    }
-  }
-
-  /* Désactiver les transformations qui peuvent causer des superpositions */
-  .hover-scale:hover {
-    transform: none !important;
-  }
-
-  /* Ajustement des espacements verticaux */
-  .py-20 {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-  }
-
-  .py-24 {
-    padding-top: 4rem !important;
-    padding-bottom: 4rem !important;
-  }
-
-  /* Correction des gaps */
-  .gap-6 {
-    gap: 1rem !important;
-  }
-
-  .gap-8 {
-    gap: 1.5rem !important;
-  }
-
-  /* Ajustement des marges */
-  .mb-16 {
-    margin-bottom: 2rem !important;
-  }
-
-  .mb-10 {
-    margin-bottom: 1.5rem !important;
-  }
-
-  /* Correction des conteneurs avec position absolute */
-  .absolute {
+  /* Ajuster la mascotte pour mobile */
+  .absolute.bottom-0.right-0 {
     position: relative !important;
-  }
-
-  /* Ajustement des z-index pour éviter les superpositions */
-  .relative {
-    z-index: auto;
-  }
-
-  /* Correction des overflow */
-  .overflow-hidden {
-    overflow: visible;
-  }
-
-  /* Ajustement des largeurs fixes */
-  .w-16 {
-    width: 3rem !important;
-    min-width: 3rem !important;
-  }
-
-  .h-16 {
-    height: 3rem !important;
-    min-height: 3rem !important;
-  }
-
-  /* Correction des textes longs */
-  p {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
-
-  /* Ajustement des boutons pour mobile */
-  button,
-  a.inline-flex {
-    width: 100%;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 auto;
+    display: flex;
     justify-content: center;
-    margin-bottom: 0.5rem;
-    min-height: 44px;
-    padding: 12px 16px;
-    font-size: 16px;
+    margin-top: 2rem;
   }
 
-  /* Boutons spécifiques */
-  .inline-flex {
-    flex-direction: column;
-    align-items: center;
+  /* Centrer le contenu hero sur mobile */
+  section > div > div {
     text-align: center;
   }
 
-  /* Correction des aspect-ratio */
-  .aspect-video {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    height: auto;
-  }
-
-  /* Optimisations supplémentaires pour mobile */
-  .container,
-  .max-w-7xl,
-  .max-w-6xl,
-  .max-w-5xl,
-  .max-w-4xl {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  /* Correction des z-index et positions */
-  .fixed.top-0 {
-    position: fixed;
-    z-index: 50;
-  }
-
-  /* Navigation mobile optimisée */
-  nav {
-    padding: 0.5rem 1rem;
-  }
-
-  /* Hero section mobile */
-  .pt-32 {
-    padding-top: 6rem !important;
-  }
-
-  .pb-24 {
-    padding-bottom: 4rem !important;
-  }
-
-  /* Cards mobile optimisées */
-  .rounded-3xl,
-  .rounded-2xl {
-    border-radius: 1rem !important;
-  }
-
-  /* Espacements mobiles */
-  .space-y-8 > * + * {
-    margin-top: 1.5rem !important;
-  }
-
-  .space-y-6 > * + * {
-    margin-top: 1rem !important;
-  }
-
-  /* Textes mobiles */
-  .text-5xl {
-    font-size: 2rem !important;
-  }
-
-  .text-4xl {
-    font-size: 1.75rem !important;
-  }
-
-  .text-3xl {
-    font-size: 1.5rem !important;
-  }
-
-  .text-2xl {
-    font-size: 1.25rem !important;
-  }
-
-  /* Footer mobile */
-  footer {
-    padding: 2rem 1rem !important;
-  }
-
-  /* Images mobiles */
-  .w-16,
-  .h-16 {
-    width: 3rem !important;
-    height: 3rem !important;
-  }
-
-  /* Formulaires mobiles */
-  input,
-  textarea,
-  select {
-    font-size: 16px !important;
-    padding: 12px !important;
-  }
-
-  /* Scroll optimisé */
-  * {
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Optimisation de rendu */
-  .will-change-transform {
-    will-change: transform;
-  }
-
-  /* Réduire les repaints */
-  .contain-layout {
-    contain: layout;
-  }
-
-  .contain-paint {
-    contain: paint;
-  }
-}
-
-/* Styles pour très petits écrans */
-@media (max-width: 480px) {
-  section {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-  }
-
-  .container,
-  .max-w-7xl,
-  .max-w-6xl,
-  .max-w-5xl,
-  .max-w-4xl {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-
-  h1 {
-    font-size: clamp(1.5rem, 10vw, 2.5rem) !important;
-  }
-
-  h2 {
-    font-size: clamp(1.25rem, 8vw, 2rem) !important;
-  }
-
-  .text-5xl {
-    font-size: 1.5rem !important;
-  }
-
-  .text-4xl {
-    font-size: 1.25rem !important;
-  }
-
-  button,
-  a.inline-flex {
-    padding: 10px 14px;
-    font-size: 14px;
-  }
-}
-
-/* Styles pour tablettes */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .grid-cols-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .grid-cols-3 {
-    grid-template-columns: repeat(2, 1fr) !important;
+  /* Ajuster les stats pour mobile */
+  .flex.flex-wrap.gap-6 {
+    justify-content: center;
   }
 }
