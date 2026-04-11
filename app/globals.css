@@ -766,31 +766,133 @@ body {
     width: 100%;
   }
 
-  /* Cacher les badges flottants qui sortent de l'écran sur mobile */
-  .absolute.-top-8,
+  /* TRANSFORMATION STYLE APPLE - Fond clair sur mobile */
+  section.bg-black,
+  section.bg-gradient-to-br,
+  section.bg-gradient-to-b {
+    background: #f5f5f7 !important;
+  }
+
+  /* Changer les textes blancs en noir sur mobile */
+  section.bg-black h1,
+  section.bg-black h2,
+  section.bg-black h3,
+  section.bg-black p,
+  section.bg-black span {
+    color: #1d1d1f !important;
+  }
+
+  /* Badges style Apple */
+  .backdrop-blur-xl.bg-white\/10 {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Bouton CTA style Apple */
+  .bg-cyan-500 {
+    background: #0071e3 !important;
+  }
+
+  /* Cacher les effets de lumière/gradient sur mobile */
+  .absolute.inset-0.bg-gradient-to-br,
   .absolute.top-1\/3,
-  .absolute.bottom-1\/3 {
+  .absolute.bottom-0.right-0.w-\[600px\],
+  .absolute.top-1\/3.left-1\/4 {
     display: none !important;
   }
 
-  /* Ajuster la mascotte pour mobile */
+  /* Cacher les badges flottants */
+  .absolute.-top-8,
+  .absolute.top-1\/3.-left-24,
+  .absolute.bottom-1\/3.-left-20,
+  .absolute.bottom-1\/3.-right-24 {
+    display: none !important;
+  }
+
+  /* Mascotte - la cacher sur mobile pour un design épuré */
   .absolute.bottom-0.right-0 {
-    position: relative !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+    display: none !important;
   }
 
-  /* Centrer le contenu hero sur mobile */
-  section > div > div {
-    text-align: center;
+  /* Hero section - centré et propre */
+  section.min-h-screen {
+    min-height: auto !important;
+    padding: 4rem 1.5rem !important;
   }
 
-  /* Ajuster les stats pour mobile */
+  /* Grille hero - une seule colonne */
+  .grid.lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    min-height: auto !important;
+  }
+
+  /* Texte centré sur mobile */
+  .text-left {
+    text-align: center !important;
+  }
+
+  /* Titres style Apple */
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Sous-titres */
+  .text-2xl,
+  .text-3xl {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+    font-weight: 400 !important;
+    color: #6e6e73 !important;
+  }
+
+  .text-lg {
+    font-size: 1rem !important;
+    color: #6e6e73 !important;
+  }
+
+  /* Boutons centrés */
+  .inline-flex {
+    margin: 0 auto !important;
+    display: inline-flex !important;
+  }
+
+  /* Stats cachées sur mobile pour un design épuré */
   .flex.flex-wrap.gap-6 {
-    justify-content: center;
+    display: none !important;
+  }
+
+  /* Scroll indicator caché */
+  .absolute.bottom-8 {
+    display: none !important;
+  }
+
+  /* Sections suivantes - fond blanc */
+  section {
+    background: white !important;
+  }
+
+  /* Cards style Apple */
+  .backdrop-blur-xl.bg-gradient-to-br {
+    background: white !important;
+    border: 1px solid #d2d2d7 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Textes des cards */
+  .text-white {
+    color: #1d1d1f !important;
+  }
+
+  .text-gray-400 {
+    color: #6e6e73 !important;
+  }
+
+  /* Padding des sections */
+  section {
+    padding: 3rem 1.5rem !important;
   }
 }
