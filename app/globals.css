@@ -766,39 +766,59 @@ body {
     width: 100%;
   }
 
-  /* TRANSFORMATION STYLE APPLE - Fond clair sur mobile */
-  section.bg-black,
-  section.bg-gradient-to-br,
-  section.bg-gradient-to-b {
-    background: #f5f5f7 !important;
+  /* GARDER LE FOND SOMBRE - Style original */
+  /* Ne pas modifier les couleurs de fond */
+  
+  /* Navbar mobile style Apple */
+  nav.fixed {
+    background: rgba(29, 29, 31, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Changer les textes blancs en noir sur mobile */
-  section.bg-black h1,
-  section.bg-black h2,
-  section.bg-black h3,
-  section.bg-black p,
-  section.bg-black span {
-    color: #1d1d1f !important;
+  /* Hauteur navbar mobile optimisée */
+  nav .flex.items-center.justify-between {
+    height: 44px !important;
+    padding: 0 16px !important;
   }
 
-  /* Badges style Apple */
-  .backdrop-blur-xl.bg-white\/10 {
-    background: rgba(0, 0, 0, 0.04) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
+  /* Logo plus petit sur mobile */
+  nav .w-10.h-10 {
+    width: 32px !important;
+    height: 32px !important;
   }
 
-  /* Bouton CTA style Apple */
-  .bg-cyan-500 {
-    background: #0071e3 !important;
+  /* Icônes navbar mobile style Apple - bien visibles */
+  nav .flex.lg\\:hidden button,
+  nav .flex.lg\\:hidden a {
+    padding: 8px !important;
+    color: white !important;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
   }
 
-  /* Cacher les effets de lumière/gradient sur mobile */
+  nav .flex.lg\\:hidden button:active,
+  nav .flex.lg\\:hidden a:active {
+    opacity: 0.6;
+  }
+
+  nav .flex.lg\\:hidden svg {
+    width: 22px !important;
+    height: 22px !important;
+    stroke-width: 1.5 !important;
+  }
+
+  /* Espacement entre les icônes */
+  nav .flex.lg\\:hidden {
+    gap: 4px !important;
+  }
+
+  /* Garder les effets de lumière mais les atténuer sur mobile */
   .absolute.inset-0.bg-gradient-to-br,
-  .absolute.top-1\/3,
-  .absolute.bottom-0.right-0.w-\[600px\],
-  .absolute.top-1\/3.left-1\/4 {
-    display: none !important;
+  .absolute.top-1\/3.left-1\/4,
+  .absolute.bottom-0.right-0.w-\[600px\] {
+    opacity: 0.3 !important;
   }
 
   /* Cacher les badges flottants */
@@ -814,10 +834,10 @@ body {
     display: none !important;
   }
 
-  /* Hero section - centré et propre */
+  /* Hero section - ajusté pour mobile */
   section.min-h-screen {
-    min-height: auto !important;
-    padding: 4rem 1.5rem !important;
+    min-height: 100vh !important;
+    padding: 5rem 1.5rem 3rem !important;
   }
 
   /* Grille hero - une seule colonne */
@@ -832,26 +852,24 @@ body {
     text-align: center !important;
   }
 
-  /* Titres style Apple */
+  /* Titres optimisés pour mobile */
   h1 {
     font-size: 2.5rem !important;
     line-height: 1.1 !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     letter-spacing: -0.02em !important;
   }
 
-  /* Sous-titres */
+  /* Sous-titres - garder les couleurs blanches */
   .text-2xl,
   .text-3xl {
     font-size: 1.25rem !important;
     line-height: 1.4 !important;
     font-weight: 400 !important;
-    color: #6e6e73 !important;
   }
 
   .text-lg {
     font-size: 1rem !important;
-    color: #6e6e73 !important;
   }
 
   /* Boutons centrés */
@@ -860,9 +878,15 @@ body {
     display: inline-flex !important;
   }
 
-  /* Stats cachées sur mobile pour un design épuré */
+  /* Stats visibles mais centrées */
   .flex.flex-wrap.gap-6 {
-    display: none !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+  }
+
+  /* Ajuster la taille des stats */
+  .flex.flex-wrap.gap-6 .text-base {
+    font-size: 0.875rem !important;
   }
 
   /* Scroll indicator caché */
@@ -870,26 +894,8 @@ body {
     display: none !important;
   }
 
-  /* Sections suivantes - fond blanc */
-  section {
-    background: white !important;
-  }
-
-  /* Cards style Apple */
-  .backdrop-blur-xl.bg-gradient-to-br {
-    background: white !important;
-    border: 1px solid #d2d2d7 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Textes des cards */
-  .text-white {
-    color: #1d1d1f !important;
-  }
-
-  .text-gray-400 {
-    color: #6e6e73 !important;
-  }
+  /* Garder le design sombre original */
+  /* Ne pas modifier les couleurs de texte */
 
   /* Padding des sections */
   section {
