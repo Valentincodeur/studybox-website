@@ -264,7 +264,7 @@ export default function Home() {
               <div className="absolute bottom-1/3 -left-20 bg-gray-900 border-2 border-white/40 rounded-2xl px-5 py-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">🎓</span>
-                  <span className="text-white text-base font-bold">1k+ étudiants</span>
+                  <span className="text-white text-base font-bold">1,5k+ étudiants</span>
                 </div>
               </div>
               
@@ -272,7 +272,7 @@ export default function Home() {
               <div className="absolute bottom-1/3 -right-24 bg-gray-900 border-2 border-white/40 rounded-2xl px-5 py-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">🎯</span>
-                  <span className="text-white text-base font-bold">96% taux satisfaction</span>
+                  <span className="text-white text-base font-bold">96% étudiants</span>
                 </div>
               </div>
             </div>
