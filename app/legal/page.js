@@ -359,8 +359,8 @@ export default function LegalPage() {
                 </ul>
                 <p className="mt-3">
                   {language === 'fr'
-                    ? 'Pour exercer ces droits, contactez-nous à : contact@studybox.be'
-                    : 'To exercise these rights, contact us at: contact@studybox.be'}
+                    ? 'Pour exercer ces droits, contactez-nous à : studybox.lje@gmail.com'
+                    : 'To exercise these rights, contact us at: studybox.lje@gmail.com'}
                 </p>
               </div>
 
