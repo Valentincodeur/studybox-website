@@ -15,11 +15,11 @@ function FeatureCard({ feature, index }) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-        } else {
-          setIsVisible(false)
+          // Déconnecter l'observer après la première apparition pour économiser les ressources
+          observer.disconnect()
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '50px' }
     )
 
     if (cardRef.current) {
@@ -27,9 +27,7 @@ function FeatureCard({ feature, index }) {
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current)
-      }
+      observer.disconnect()
     }
   }, [])
 
@@ -41,27 +39,28 @@ function FeatureCard({ feature, index }) {
       className="group relative"
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(60px) scale(0.9)',
-        transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${index * 100}ms`
+        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+        transition: `all 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${index * 50}ms`,
+        willChange: isVisible ? 'auto' : 'opacity, transform'
       }}
     >
       <div 
-        className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-3xl blur-xl transition-all duration-700`}
+        className={`absolute -inset-1 bg-gradient-to-r ${feature.color} rounded-3xl blur-xl transition-opacity duration-300`}
         style={{
           opacity: isHovered ? 0.6 : 0.2
         }}
       />
       <div 
-        className="relative backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl p-8 transition-all duration-700"
+        className="relative backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl p-8 transition-all duration-300"
         style={{
           transform: isHovered ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
           borderColor: isHovered ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.2)'
         }}
       >
         <div 
-          className="text-5xl mb-4 transition-all duration-500"
+          className="text-5xl mb-4 transition-all duration-200"
           style={{
-            transform: isHovered ? 'scale(1.2) rotate(5deg)' : 'scale(1) rotate(0deg)'
+            transform: isHovered ? 'scale(1.1) rotate(3deg)' : 'scale(1) rotate(0deg)'
           }}
         >
           {feature.icon}

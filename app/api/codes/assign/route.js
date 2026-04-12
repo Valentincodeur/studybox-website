@@ -77,24 +77,28 @@ async function sendCodeEmail(email, code) {
     </html>
   `
   
-  // TODO: Intégrer votre service d'email (Resend, SendGrid, AWS SES, etc.)
-  // Exemple avec Resend:
-  /*
   const { Resend } = require('resend')
   const resend = new Resend(process.env.RESEND_API_KEY)
   
-  await resend.emails.send({
-    from: 'StudyBox <noreply@studybox.com>',
-    to: email,
-    subject: '🎉 Votre code d\'accès StudyBox',
-    html: emailHTML
-  })
-  */
-  
-  // Pour l'instant, on simule l'envoi
-  console.log(`Email envoyé à ${email} avec le code ${code}`)
-  
-  return true
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'StudyBox <noreply@studybox.com>',
+      to: email,
+      subject: 'Votre code d\'accès StudyBox',
+      html: emailHTML
+    })
+    
+    if (error) {
+      console.error('Erreur Resend:', error)
+      return false
+    }
+    
+    console.log(`Email envoyé à ${email} avec le code ${code}`)
+    return true
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi d\'email:', error)
+    return false
+  }
 }
 
 export async function POST(request) {

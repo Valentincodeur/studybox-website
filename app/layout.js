@@ -12,8 +12,11 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </head>
-      <body>
+      <body className="antialiased">
         <LanguageProvider>
           <LayoutContent>{children}</LayoutContent>
         </LanguageProvider>
