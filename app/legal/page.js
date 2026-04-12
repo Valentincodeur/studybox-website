@@ -125,25 +125,25 @@ export default function LegalPage() {
                 </h3>
                 <p>
                   {language === 'fr'
-                    ? 'Les présentes conditions régissent la vente des StudyBox, produits pédagogiques destinés aux étudiants, comprenant du matériel d\'étude physique et l\'accès à notre application mobile.'
-                    : 'These conditions govern the sale of StudyBox, educational products for students, including physical study materials and access to our mobile application.'}
+                    ? 'Les présentes conditions régissent l\'accès et l\'utilisation de l\'application mobile StudyBox, service pédagogique destiné aux étudiants.'
+                    : 'These conditions govern access to and use of the StudyBox mobile application, an educational service for students.'}
                 </p>
               </div>
 
               {/* 2. Description */}
               <div className="border-l-4 border-studybox-blue pl-6">
                 <h3 className="text-2xl font-semibold text-black mb-3">
-                  2. {language === 'fr' ? 'Description des produits' : 'Product description'}
+                  2. {language === 'fr' ? 'Description du service' : 'Service description'}
                 </h3>
                 <p className="mb-3">
                   {language === 'fr'
-                    ? 'Chaque StudyBox contient une sélection de fournitures scolaires de qualité, des outils d\'organisation et un code d\'accès à notre application mobile premium.'
-                    : 'Each StudyBox contains a selection of quality school supplies, organizational tools and an access code to our premium mobile application.'}
+                    ? 'StudyBox est une application mobile premium proposant des outils d\'organisation, de prise de notes, de planification et d\'aide à l\'étude.'
+                    : 'StudyBox is a premium mobile application offering organization, note-taking, planning and study assistance tools.'}
                 </p>
                 <p className="text-sm italic">
                   {language === 'fr'
-                    ? 'Le contenu peut être modifié selon les besoins pédagogiques et la disponibilité des produits.'
-                    : 'Content may be modified according to educational needs and product availability.'}
+                    ? 'Les fonctionnalités peuvent être modifiées selon les besoins pédagogiques et les mises à jour de l\'application.'
+                    : 'Features may be modified according to educational needs and application updates.'}
                 </p>
               </div>
 
@@ -184,19 +184,19 @@ export default function LegalPage() {
                 </div>
               </div>
 
-              {/* 5. Livraison */}
+              {/* 5. Accès au service */}
               <div className="border-l-4 border-studybox-blue pl-6">
                 <h3 className="text-2xl font-semibold text-black mb-3">
-                  5. {language === 'fr' ? 'Livraison' : 'Delivery'}
+                  5. {language === 'fr' ? 'Accès au service' : 'Service access'}
                 </h3>
                 <p className="mb-3">
                   {language === 'fr'
-                    ? 'Les StudyBox sont livrées en Belgique dans un délai indicatif de 5 à 7 jours ouvrables.'
-                    : 'StudyBox are delivered in Belgium within an indicative period of 5 to 7 working days.'}
+                    ? 'L\'accès à l\'application StudyBox est immédiat après validation du paiement. Vous recevrez vos identifiants de connexion par email.'
+                    : 'Access to the StudyBox application is immediate after payment validation. You will receive your login credentials by email.'}
                 </p>
                 <div className="bg-blue-50 rounded-lg p-4">
                   <p className="font-semibold text-studybox-blue">
-                    {language === 'fr' ? '🎁 Livraison gratuite dès 3 StudyBox commandées' : '🎁 Free delivery from 3 StudyBox ordered'}
+                    {language === 'fr' ? '📱 Disponible sur iOS et Android' : '📱 Available on iOS and Android'}
                   </p>
                 </div>
               </div>
@@ -208,13 +208,13 @@ export default function LegalPage() {
                 </h3>
                 <p className="mb-3">
                   {language === 'fr'
-                    ? 'Conformément à la législation belge, vous disposez de 14 jours pour annuler votre commande et demander un remboursement pour un produit physique.'
-                    : 'In accordance with Belgian legislation, you have 14 days to cancel your order and request a refund for a physical product.'}
+                    ? 'Conformément à la législation belge, vous disposez de 14 jours pour annuler votre abonnement et demander un remboursement.'
+                    : 'In accordance with Belgian legislation, you have 14 days to cancel your subscription and request a refund.'}
                 </p>
                 <p className="text-sm italic">
                   {language === 'fr'
-                    ? 'Les produits doivent être retournés dans leur état d\'origine, non utilisés et complets.'
-                    : 'Products must be returned in their original condition, unused and complete.'}
+                    ? 'Pour les contenus numériques, le droit de rétractation s\'applique tant que vous n\'avez pas commencé à utiliser le service.'
+                    : 'For digital content, the right of withdrawal applies as long as you have not started using the service.'}
                 </p>
               </div>
 
@@ -237,8 +237,8 @@ export default function LegalPage() {
                 </h3>
                 <p>
                   {language === 'fr'
-                    ? 'Les informations recueillies sont utilisées uniquement pour la gestion de votre commande. Pour plus de détails, consultez notre '
-                    : 'The information collected is used only for the management of your order. For more details, see our '}
+                    ? 'Les informations recueillies (email, nom) sont utilisées uniquement pour la gestion de votre compte et l\'accès à l\'application. Pour plus de détails, consultez notre '
+                    : 'The information collected (email, name) is used only for managing your account and application access. For more details, see our '}
                   <Link href="/legal#confidentialite" className="text-studybox-blue hover:underline font-semibold">
                     {language === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy'}
                   </Link>.
@@ -307,9 +307,8 @@ export default function LegalPage() {
                 <ul className="list-disc list-inside ml-4 space-y-1 mt-2">
                   <li>{language === 'fr' ? 'Nom et prénom' : 'First and last name'}</li>
                   <li>{language === 'fr' ? 'Adresse email' : 'Email address'}</li>
-                  <li>{language === 'fr' ? 'Adresse de livraison' : 'Delivery address'}</li>
-                  <li>{language === 'fr' ? 'Numéro de téléphone' : 'Phone number'}</li>
                   <li>{language === 'fr' ? 'Informations de paiement (via prestataire sécurisé)' : 'Payment information (via secure provider)'}</li>
+                  <li>{language === 'fr' ? 'Données d\'utilisation de l\'application (optionnel)' : 'Application usage data (optional)'}</li>
                 </ul>
               </div>
 
@@ -323,10 +322,10 @@ export default function LegalPage() {
                     : 'Your data is used to:'}
                 </p>
                 <ul className="list-disc list-inside ml-4 space-y-1 mt-2">
-                  <li>{language === 'fr' ? 'Traiter et livrer vos commandes' : 'Process and deliver your orders'}</li>
-                  <li>{language === 'fr' ? 'Gérer votre compte client' : 'Manage your customer account'}</li>
-                  <li>{language === 'fr' ? 'Vous envoyer des informations sur nos produits (avec votre consentement)' : 'Send you information about our products (with your consent)'}</li>
-                  <li>{language === 'fr' ? 'Améliorer nos services' : 'Improve our services'}</li>
+                  <li>{language === 'fr' ? 'Gérer votre compte et votre abonnement' : 'Manage your account and subscription'}</li>
+                  <li>{language === 'fr' ? 'Vous donner accès à l\'application' : 'Give you access to the application'}</li>
+                  <li>{language === 'fr' ? 'Vous envoyer des informations sur nos services (avec votre consentement)' : 'Send you information about our services (with your consent)'}</li>
+                  <li>{language === 'fr' ? 'Améliorer nos services et fonctionnalités' : 'Improve our services and features'}</li>
                 </ul>
               </div>
 
@@ -382,8 +381,8 @@ export default function LegalPage() {
                 </h3>
                 <p>
                   {language === 'fr'
-                    ? 'Nous ne vendons ni ne louons vos données personnelles. Vos données peuvent être partagées avec nos prestataires de services (paiement, livraison) uniquement dans le cadre de l\'exécution de votre commande.'
-                    : 'We do not sell or rent your personal data. Your data may be shared with our service providers (payment, delivery) only as part of the execution of your order.'}
+                    ? 'Nous ne vendons ni ne louons vos données personnelles. Vos données peuvent être partagées avec nos prestataires de services (paiement, hébergement) uniquement dans le cadre de la fourniture du service.'
+                    : 'We do not sell or rent your personal data. Your data may be shared with our service providers (payment, hosting) only as part of providing the service.'}
                 </p>
               </div>
             </div>

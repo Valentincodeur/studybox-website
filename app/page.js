@@ -217,7 +217,7 @@ export default function Home() {
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 border-2 border-black"></div>
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 border-2 border-black"></div>
                     </div>
-                    <span className="text-white text-base font-medium">+1k étudiants actifs</span>
+                    <span className="text-white text-base font-medium">+1,5k étudiants actifs</span>
                   </div>
                   
                   <div className="flex items-center gap-3">
@@ -320,7 +320,7 @@ export default function Home() {
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
               <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl p-8 text-center hover:scale-105 transition-all duration-500">
-                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-3">10k+</div>
+                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-3">1,5k+</div>
                 <div className="text-white font-bold text-lg mb-2">{language === 'fr' ? 'Étudiants Actifs' : 'Active Students'}</div>
                 <div className="text-gray-400 text-sm">{language === 'fr' ? 'Rejoignez notre communauté' : 'Join our community'}</div>
               </div>
@@ -329,7 +329,7 @@ export default function Home() {
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
               <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-3xl p-8 text-center hover:scale-105 transition-all duration-500">
-                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-3">98%</div>
+                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-3">96%</div>
                 <div className="text-white font-bold text-lg mb-2">{language === 'fr' ? 'Taux de Satisfaction' : 'Satisfaction Rate'}</div>
                 <div className="text-gray-400 text-sm">{language === 'fr' ? 'Étudiants satisfaits' : 'Happy students'}</div>
               </div>
