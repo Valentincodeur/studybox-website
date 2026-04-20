@@ -16,7 +16,6 @@ const nextConfig = {
   
   // Prefetching automatique des liens
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['lucide-react'],
   },
   
