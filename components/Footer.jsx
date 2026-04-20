@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
 
         {/* Logo LJE - Badge Mini-Entreprise en bas à droite */}
-        <div className="absolute bottom-6 right-6 hidden md:block group">
+        <div className="absolute bottom-6 right-6 hidden md:block">
           <div className="relative">
             <div className="absolute inset-0 bg-white/80 rounded-2xl shadow-lg"></div>
             <a 
@@ -69,20 +69,14 @@ export default function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
               className="relative z-10 block"
+              title="Membre des Jeunes Entreprises - N° 2581095"
             >
               <img 
                 src="/images/logo-lje.png" 
-                alt="Les Jeunes Entreprises - LJE" 
+                alt="Les Jeunes Entreprises - LJE - N° 2581095" 
                 className="h-20 w-auto opacity-100 hover:opacity-100 transition-all duration-300 hover:scale-110"
               />
             </a>
-            {/* Tooltip au survol */}
-            <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <div className="bg-white text-gray-900 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap text-sm font-medium">
-                <p>Membre des Jeunes Entreprises</p>
-                <p className="text-xs text-gray-600 mt-1">N° 2581095</p>
-              </div>
-            </div>
           </div>
         </div>
 
