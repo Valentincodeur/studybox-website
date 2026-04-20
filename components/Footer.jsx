@@ -79,7 +79,8 @@ export default function Footer() {
             {/* Tooltip au survol */}
             <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
               <div className="bg-white text-gray-900 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap text-sm font-medium">
-                Membre des Jeunes Entreprises
+                <p>Membre des Jeunes Entreprises</p>
+                <p className="text-xs text-gray-600 mt-1">N° 2581095</p>
               </div>
             </div>
           </div>
@@ -105,7 +106,10 @@ export default function Footer() {
                   />
                 </a>
               </div>
-              <p className="text-sm font-semibold text-gray-900">Les Jeunes Entreprises</p>
+              <div className="text-center">
+                <p className="text-sm font-semibold text-gray-900">Les Jeunes Entreprises</p>
+                <p className="text-xs text-gray-600 mt-1">N° de mini-entreprise : 2581095</p>
+              </div>
             </div>
           </div>
         </div>

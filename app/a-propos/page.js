@@ -102,9 +102,14 @@ export default function AProposPage() {
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">
                 Les Jeunes Entrepreneurs
               </h2>
-              <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light mb-4">
                 StudyBox est une mini-entreprise
               </p>
+              <div className="inline-block bg-white/20 backdrop-blur-sm rounded-2xl px-6 py-3 mt-4">
+                <p className="text-white/90 font-medium">
+                  N° de mini-entreprise : <span className="font-bold">2581095</span>
+                </p>
+              </div>
             </div>
           </AnimatedSection>
         </div>
