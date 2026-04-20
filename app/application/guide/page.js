@@ -48,7 +48,7 @@ export default function GuidePage() {
       color: 'bg-purple-500',
     },
     {
-      number: 4,je 
+      number: 4,
       title: language === 'fr' ? 'Importez vos documents' : 'Import your documents',
       description: language === 'fr' 
         ? 'Importez vos cours existants (PDF, Word, images) ou commencez à prendre des notes directement dans l\'application.' 
